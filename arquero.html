@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquero - FutsalGO</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #17334d;
+    background: linear-gradient(135deg, #091a32, #24628c, #b4e5f7);
+}
+
+header {
+    text-align: center;
+    padding: 28px 15px;
+    color: white;
+    background: linear-gradient(135deg, #071629, #19476c);
+    border-bottom: 3px solid #8ce2ff;
+}
+
+header h1 {
+    color: #8ce2ff;
+    margin: 0 0 10px;
+}
+
+.contenedor {
+    width: 92%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+
+.perfil, .introduccion, .objetivo, .video {
+    background: #f1f9ff;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 5px 15px #06152644;
+}
+
+.perfil {
+    text-align: center;
+}
+
+h2 {
+    color: #176b9d;
+}
+
+.titulo {
+    color: white;
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    overflow: hidden;
+    border-radius: 15px;
+    background: #f4faff;
+    box-shadow: 0 5px 15px #06152655;
+}
+
+.tarjeta img, .espacio-imagen {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.espacio-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #c4edff, #eaf8ff);
+    color: #176b9d;
+    font-size: 48px;
+}
+
+.tarjeta .texto {
+    padding: 18px;
+}
+
+.tarjeta h3 {
+    color: #176b9d;
+}
+
+.tarjeta p {
+    line-height: 1.6;
+}
+
+.video video {
+    display: block;
+    width: 100%;
+    max-width: 750px;
+    margin: 15px auto;
+    border-radius: 12px;
+    background: #10243a;
+}
+
+.nota {
+    color: #536b7d;
+    font-size: 14px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #a5e5ff;
+    color: #102e49;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #091a30;
+    color: #e4f5ff;
+}
+
+@media (max-width: 500px) {
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚽ FutsalGO</h1>
+    <p>Entrenamiento y aprendizaje del arquero</p>
+</header>
+
+<main class="contenedor">
+
+    <section class="perfil">
+        <h2>Mi perfil de juego</h2>
+        <p>Categoría: <strong id="categoria">SUB-12</strong></p>
+        <p>Posición: <strong id="posicion">Arquero</strong></p>
+    </section>
+
+    <section class="introduccion">
+        <h2 id="titulo">Aprendizaje del arquero SUB-12</h2>
+        <p id="descripcion">
+            Aprende a defender la portería, controlar el balón,
+            comunicarte con tus compañeros e iniciar jugadas.
+        </p>
+    </section>
+
+    <h2 class="titulo">🧤 Técnicas del arquero</h2>
+
+    <section class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto1">🧤</div>
+            <div class="texto">
+                <h3>1. Posición básica</h3>
+                <p>Mantén el cuerpo equilibrado, las rodillas ligeramente flexionadas y las manos preparadas para reaccionar.</p>
+                <p><strong>Ejercicio:</strong> practica desplazamientos cortos hacia ambos lados.</p>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto2">⚽</div>
+            <div class="texto">
+                <h3>2. Recepción del balón</h3>
+                <p>Observa la trayectoria del balón y aprende a controlarlo de manera segura.</p>
+                <p><strong>Ejercicio:</strong> recibe pases suaves de un compañero.</p>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto3">🎯</div>
+            <div class="texto">
+                <h3>3. Pase y distribución</h3>
+                <p>Después de recuperar el balón, busca a un compañero libre para iniciar una jugada.</p>
+                <p><strong>Ejercicio:</strong> practica pases cortos hacia diferentes objetivos.</p>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto4">🗣️</div>
+            <div class="texto">
+                <h3>4. Comunicación</h3>
+                <p>Informa a tus compañeros sobre los rivales, los espacios libres y los movimientos defensivos.</p>
+                <p><strong>Ejercicio:</strong> practica indicaciones claras durante un juego reducido.</p>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto5">👀</div>
+            <div class="texto">
+                <h3>5. Ubicación y reacción</h3>
+                <p>Ajusta tu posición según el lugar del balón y los movimientos de los rivales.</p>
+                <p><strong>Ejercicio:</strong> sigue los pases y practica volver a una posición equilibrada.</p>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="espacio-imagen" id="foto6">🤝</div>
+            <div class="texto">
+                <h3>6. Apoyo al equipo</h3>
+                <p>Participa en la organización defensiva y ayuda a iniciar el ataque cuando sea conveniente.</p>
+                <p><strong>Ejercicio:</strong> combina pases con tus compañeros para salir jugando.</p>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="video">
+        <h2>🎬 Video de aprendizaje</h2>
+        <p>Aquí podrás mostrar un video de las técnicas del arquero.</p>
+
+        <div class="video-card">
+    <h3>Sub-9 - Arquero</h3>
+    <p>Aprende las técnicas básicas
+    para ser un buen arquero.</p>
+
+    <a href="https://www.youtube.com/results?search_query=entrenamiento+portero+futsal+ni%C3%B1os+corto"
+       target="_blank">
+       ▶ Ver video de entrenamiento
+    </a>
+</div>
+    </section>
+
+    <section class="objetivo">
+        <h2>🎯 Objetivo de aprendizaje</h2>
+        <p id="objetivo">
+            Mejorar la postura, el control del balón, los pases y la comunicación.
+        </p>
+    </section>
+
+    <div class="botones">
+        <button onclick="volverMenu()">← Volver al menú</button>
+        <button onclick="volverPerfil()">Cambiar perfil</button>
+    </div>
+
+</main>
+
+<footer>
+    FutsalGot | Aprende, practica y mejora tu futsal ⚽
+</footer>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+
+const categoria = parametros.get("categoria") || "SUB-12";
+const posicion = parametros.get("posicion") || "Arquero";
+
+document.getElementById("categoria").textContent = categoria;
+document.getElementById("posicion").textContent = posicion;
+document.getElementById("titulo").textContent =
+    "Aprendizaje del arquero " + categoria;
+
+const descripciones = {
+    "SUB-9": {
+        descripcion: "Aprende las bases del puesto con juegos sencillos, coordinación y control del balón.",
+        objetivo: "Reconocer la posición básica y practicar recepciones y pases sencillos."
+    },
+    "SUB-12": {
+        descripcion: "Practica la posición básica, la recepción del balón y la comunicación con tus compañeros.",
+        objetivo: "Mejorar la ubicación, la recepción y la distribución del balón."
+    },
+    "SUB-14": {
+        descripcion: "Desarrolla la reacción, la ubicación y la capacidad para apoyar la organización defensiva.",
+        objetivo: "Mejorar la reacción, la comunicación y la toma de decisiones."
+    },
+    "SUB-16": {
+        descripcion: "Perfecciona la lectura del juego, la distribución y la coordinación con la defensa.",
+        objetivo: "Tomar decisiones oportunas y colaborar en las transiciones del equipo."
+    },
+    "SUB-18": {
+        descripcion: "Trabaja la lectura táctica, la comunicación defensiva y la distribución del balón bajo presión.",
+        objetivo: "Integrar habilidades técnicas y tácticas para apoyar al equipo durante el partido."
+    }
+};
+
+const contenido = descripciones[categoria] || descripciones["SUB-12"];
+
+document.getElementById("descripcion").textContent = contenido.descripcion;
+document.getElementById("objetivo").textContent = contenido.objetivo;
+
+function volverMenu() {
+    window.location.href =
+        "menu%20perfil.html?categoria=" +
+        encodeURIComponent(categoria) +
+        "&posicion=" +
+        encodeURIComponent(posicion);
+}
+
+function volverPerfil() {
+    window.location.href = "perfil.html";
+}
+</script>
+
+</body>
+</html>

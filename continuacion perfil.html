@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendizaje - FutsalApp</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #071629, #123d5a);
+            color: white;
+        }
+
+        .contenedor {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #42d9ff;
+        }
+
+        .tarjeta {
+            background: #17344b;
+            padding: 20px;
+            margin: 18px 0;
+            border-radius: 16px;
+        }
+
+        h2, h3 {
+            color: #42d9ff;
+        }
+
+        button {
+            padding: 13px 20px;
+            margin: 8px 5px 8px 0;
+            border: none;
+            border-radius: 10px;
+            background: #00bde9;
+            color: #071629;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        li {
+            margin: 12px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="contenedor">
+        <h1>⚽ ¡Aprende Futsal!</h1>
+        <p id="bienvenida">Contenido recomendado para ti.</p>
+
+        <div class="tarjeta">
+            <h2 id="titulo">Tu aprendizaje</h2>
+            <p id="descripcion"></p>
+
+            <h3>¿Qué aprenderás?</h3>
+            <ul id="lecciones"></ul>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Tu perfil</h3>
+            <p id="perfil"></p>
+            <button onclick="volver()">Volver al perfil</button>
+        </div>
+    </main>
+
+    <script>
+        const nivel = localStorage.getItem("nivel") || "basico";
+        const posicion = localStorage.getItem("posicion") || "sinposicion";
+        const experiencia = localStorage.getItem("experiencia") || "principiante";
+        const objetivo = localStorage.getItem("objetivo") || "desde_cero";
+
+        let aprendizajes = [];
+
+        try {
+            aprendizajes = JSON.parse(
+                localStorage.getItem("aprendizaje") || "[]"
+            );
+        } catch (error) {
+            aprendizajes = [];
+        }
+
+        const nombres = {
+            tecnicas: "Técnicas de futsal",
+            estrategias: "Estrategias de juego",
+            sistemas: "Sistemas de juego",
+            ejercicios: "Ejercicios de futsal",
+            jugadas: "Jugadas de futsal"
+        };
+
+        const contenidos = {
+            tecnicas: [
+                "Controlar y pasar el balón.",
+                "Practicar la conducción con ambos pies.",
+                "Mejorar el tiro a portería."
+            ],
+            estrategias: [
+                "Buscar espacios libres.",
+                "Apoyar al compañero que tiene el balón.",
+                "Organizar el ataque y la defensa."
+            ],
+            sistemas: [
+                "Conocer los sistemas 2-2 y 3-1.",
+                "Comprender las funciones de cada posición.",
+                "Practicar la colocación del equipo."
+            ],
+            ejercicios: [
+                "Practicar pases en parejas.",
+                "Realizar conducción entre conos.",
+                "Practicar tiros a portería con control."
+            ],
+            jugadas: [
+                "Practicar pases y desmarques.",
+                "Aprender movimientos a balón parado.",
+                "Coordinar jugadas con los compañeros."
+            ]
+        };
+
+        document.getElementById("bienvenida").textContent =
+            "Tu nivel de aprendizaje: " + nivel;
+
+        document.getElementById("perfil").textContent =
+            "Experiencia: " + experiencia +
+            " | Posición: " + posicion +
+            " | Objetivo: " + objetivo;
+
+        const lista = document.getElementById("lecciones");
+
+        if (aprendizajes.length === 0) {
+            document.getElementById("titulo").textContent =
+                "Elige qué quieres aprender";
+            document.getElementById("descripcion").textContent =
+                "Todavía no encontramos temas seleccionados. Vuelve al perfil y marca al menos una opción.";
+        } else {
+            document.getElementById("titulo").textContent =
+                "Tu plan de aprendizaje";
+
+            document.getElementById("descripcion").textContent =
+                "Estos son los temas que elegiste. Empieza poco a poco y practica de forma segura.";
+
+            aprendizajes.forEach(function(tema) {
+                const encabezado = document.createElement("h3");
+                encabezado.textContent = nombres[tema] || tema;
+                lista.appendChild(encabezado);
+
+                const lecciones = contenidos[tema] || [
+                    "Pronto añadiremos más contenido sobre este tema."
+                ];
+
+                lecciones.forEach(function(leccion) {
+                    const elemento = document.createElement("li");
+                    elemento.textContent = leccion;
+                    lista.appendChild(elemento);
+                });
+            });
+        }
+
+        function volver() {
+            window.location.href = "perfil.html";
+        }
+    </script>
+</body>
+</html>

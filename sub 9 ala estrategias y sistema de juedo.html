@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-9 Ala | FutsalGot</title>
+
+<style>
+:root {
+    --azul: #087cf0;
+    --celeste: #10c9e8;
+    --morado: #a36bff;
+    --blanco: #f5f9ff;
+    --texto: #d3e4f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top right, #173c70 0, transparent 35%),
+        linear-gradient(145deg, #06101f, #0a2447, #06101f);
+    color: var(--blanco);
+    min-height: 100vh;
+    padding: 18px;
+}
+
+.contenedor {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.encabezado {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 20px;
+    border-radius: 22px;
+    text-align: center;
+    background: linear-gradient(120deg, #087cf0, #263d86, #7544b9);
+    box-shadow: 0 12px 35px #0006;
+}
+
+.encabezado::before {
+    content: "⚽";
+    position: absolute;
+    font-size: 115px;
+    opacity: .10;
+    right: 15px;
+    top: 5px;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.logo span {
+    color: #10e5ff;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 30px;
+    background: #ffffff22;
+    border: 1px solid #ffffff55;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.encabezado h1 {
+    font-size: clamp(23px, 5vw, 32px);
+    margin-bottom: 9px;
+}
+
+.encabezado p {
+    color: #e1efff;
+    font-size: 14px;
+}
+
+.introduccion {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 16px;
+    background: #112b4d;
+    border: 1px solid #24517c;
+    border-left: 4px solid var(--celeste);
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+.titulo-seccion {
+    color: var(--celeste);
+    font-size: 21px;
+    margin: 27px 0 16px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 17px;
+}
+
+.tarjeta {
+    position: relative;
+    overflow: hidden;
+    padding: 21px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #142f53, #091a32);
+    border: 1px solid #28517c;
+    box-shadow: 0 8px 22px #0004;
+    transition: .25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: var(--celeste);
+    box-shadow: 0 12px 25px #087cf033;
+}
+
+.numero {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    color: #ffffff20;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.icono {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 27px;
+    background: linear-gradient(135deg, #087cf0, #7544b9);
+    margin-bottom: 15px;
+}
+
+.tarjeta h3 {
+    color: var(--celeste);
+    font-size: 17px;
+    margin-bottom: 11px;
+}
+
+.tarjeta p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.objetivo {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 11px;
+    background: #087cf020;
+    border: 1px solid #087cf044;
+    color: #c4eaff;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.sistema {
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #112b4d, #0a1a32);
+    border: 1px solid #28517c;
+    text-align: center;
+}
+
+.sistema h3 {
+    color: var(--celeste);
+    margin-bottom: 12px;
+}
+
+.cancha {
+    max-width: 420px;
+    margin: 18px auto;
+    padding: 20px 10px;
+    border: 3px solid #8ceeff;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #126b58, #0d594b);
+    box-shadow: inset 0 0 25px #0004;
+}
+
+.fila {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.jugador {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid white;
+    background: #087cf0;
+}
+
+.ala {
+    background: #a36bff;
+}
+
+.nota {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+.consejo {
+    margin-top: 23px;
+    padding: 20px;
+    border-radius: 17px;
+    background: linear-gradient(120deg, #172e56, #34245e);
+    border: 1px solid #7657c2;
+    line-height: 1.7;
+    color: var(--texto);
+}
+
+.consejo h3 {
+    color: #c09aff;
+    margin-bottom: 9px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 28px 0;
+}
+
+button {
+    padding: 13px 23px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #087cf0, #3657b8);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.volver {
+    background: linear-gradient(135deg, #7544b9, #a36bff);
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+footer {
+    text-align: center;
+    color: #8daac9;
+    font-size: 12px;
+    padding: 15px;
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 12px;
+    }
+
+    .encabezado {
+        padding: 25px 14px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="contenedor">
+
+<header class="encabezado">
+    <div class="logo">FUTSAL<span>GOT</span></div>
+    <div class="etiqueta">CATEGORÍA SUB-9</div>
+    <h1>Estrategias y sistema de juego</h1>
+    <p>Posición: Ala</p>
+</header>
+
+<div class="introduccion">
+    El ala es un jugador que se mueve principalmente por los lados de la
+    cancha. Ayuda tanto en la defensa como en el ataque, participa en los
+    pases y busca espacios para avanzar con el balón.
+</div>
+
+<h2 class="titulo-seccion">⚡ Estrategias para el jugador ala</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <span class="numero">01</span>
+        <div class="icono">🏃</div>
+        <h3>1. Movimiento por las bandas</h3>
+        <p>El ala debe desplazarse por los lados de la cancha para ofrecer
+        opciones de pase y ayudar a que el equipo avance.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> aprender a ocupar los espacios laterales.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">02</span>
+        <div class="icono">⚽</div>
+        <h3>2. Pase y apoyo</h3>
+        <p>Después de pasar el balón, debe moverse para ofrecer una nueva
+        opción a sus compañeros y continuar participando en la jugada.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> mejorar los pases y el trabajo en equipo.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">03</span>
+        <div class="icono">🎯</div>
+        <h3>3. Búsqueda de espacios</h3>
+        <p>Debe observar la cancha y desplazarse hacia los espacios libres
+        para recibir el balón sin estar rodeado de rivales.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> desarrollar la visión de juego.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">04</span>
+        <div class="icono">🛡️</div>
+        <h3>4. Apoyo en la defensa</h3>
+        <p>Cuando el equipo pierde el balón, el ala debe regresar y colaborar
+        con sus compañeros para recuperar el orden defensivo.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> aprender a participar en defensa y ataque.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">05</span>
+        <div class="icono">🔄</div>
+        <h3>5. Cambio de dirección</h3>
+        <p>Puede cambiar de dirección mientras conduce el balón para
+        encontrar espacios y facilitar el avance de la jugada.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> mejorar la coordinación y el control del balón.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">06</span>
+        <div class="icono">🤝</div>
+        <h3>6. Combinación con el pívot</h3>
+        <p>El ala puede realizar pases con el pívot y moverse para recibir
+        nuevamente el balón y ayudar a crear oportunidades de ataque.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> mejorar la coordinación entre compañeros.
+        </div>
+    </article>
+
+</div>
+
+<h2 class="titulo-seccion">⚽ Sistema de juego básico: 1-2-1</h2>
+
+<div class="sistema">
+    <h3>Distribución de los jugadores</h3>
+
+    <div class="cancha">
+        <div class="fila">
+            <div class="jugador">PÍVOT</div>
+        </div>
+
+        <div class="fila">
+            <div class="jugador ala">ALA</div>
+            <div class="jugador">CIERRE</div>
+        </div>
+
+        <div class="fila">
+            <div class="jugador">ARQUERO</div>
+        </div>
+    </div>
+
+    <p class="nota">
+        En el sistema 1-2-1, el ala se ubica a un costado del cierre.
+        Desde esa posición puede apoyar la defensa, avanzar por la banda
+        y colaborar con el pívot en las jugadas de ataque.
+    </p>
+</div>
+
+<div class="consejo">
+    <h3>⭐ Recomendación</h3>
+    Practica los movimientos laterales, los pases y los cambios de dirección
+    mediante actividades sencillas. Recuerda que el ala debe estar atento
+    y colaborar con sus compañeros durante todo el partido.
+</div>
+
+<div class="botones">
+    <button class="volver" onclick="window.location.href='menu perfil.html'">
+        ← Volver al menú
+    </button>
+
+    <button onclick="window.location.href='perfil.html'">
+        Cambiar perfil
+    </button>
+</div>
+
+<footer>
+    FutsalGot · Aprende, practica y mejora tu futsal
+</footer>
+
+</div>
+</body>
+</html>

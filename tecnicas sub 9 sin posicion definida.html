@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnicas Sub-9 | FutsalGot</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 18px;
+    font-family: Arial, sans-serif;
+    color: #f5f9ff;
+    background: linear-gradient(145deg, #071326, #0a2447, #06101f);
+}
+
+header {
+    text-align: center;
+    padding: 20px 5px;
+}
+
+.logo {
+    color: #10c9e8;
+    font-size: 29px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+header h2 {
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #d3e4f8;
+    line-height: 1.6;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #163e68;
+    color: #10c9e8;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.contenedor {
+    max-width: 750px;
+    margin: auto;
+}
+
+.tarjeta {
+    background: #112b4d;
+    border: 1px solid #234b75;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.tarjeta h3 {
+    color: #10c9e8;
+    margin-top: 0;
+}
+
+.tarjeta p {
+    color: #d3e4f8;
+    line-height: 1.6;
+}
+.detalle {
+    display: block;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #315477;
+}
+
+}
+
+button {
+    background: #087cf0;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #10a8e8;
+}
+
+.volver {
+    display: block;
+    margin: 25px auto;
+    background: #a36bff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FUTSALGOT</div>
+    <h2>Técnicas de futsal</h2>
+    <div class="etiqueta">SUB-9 · SIN POSICIÓN DEFINIDA</div>
+    <p>
+        Aprende las técnicas fundamentales del futsal
+        mediante explicaciones y ejercicios sencillos.
+    </p>
+</header>
+
+<main class="contenedor">
+
+    <section class="tarjeta">
+        <h3>1. Control del balón</h3>
+        <p>Aprende a recibir y dominar el balón correctamente.</p>
+        <button onclick="mostrar(1)">Ver contenido</button>
+        <div class="detalle" id="detalle1">
+            <p><b>¿Qué es?</b> Es la habilidad de recibir el balón y mantenerlo cerca del jugador.</p>
+            <p><b>Importancia:</b> Permite conservar el balón y prepararse para realizar otra acción.</p>
+            <p><b>Ejercicio:</b> Recibe pases suaves con la planta y el interior del pie. Intenta mantener el balón cerca.</p>
+        </div>
+    </section>
+
+    <section class="tarjeta">
+        <h3>2. Pase y recepción</h3>
+        <p>Aprende a pasar el balón y recibirlo de un compañero.</p>
+        <button onclick="mostrar(2)">Ver contenido</button>
+        <div class="detalle" id="detalle2">
+            <p><b>¿Qué es?</b> El pase consiste en enviar el balón a un compañero y la recepción en controlarlo.</p>
+            <p><b>Importancia:</b> Ayuda a mantener la comunicación y el trabajo en equipo.</p>
+            <p><b>Ejercicio:</b> En parejas, realicen pases cortos utilizando el interior del pie.</p>
+        </div>
+    </section>
+
+    <section class="tarjeta">
+        <h3>3. Conducción del balón</h3>
+        <p>Aprende a desplazarte con el balón sin perder el control.</p>
+        <button onclick="mostrar(3)">Ver contenido</button>
+        <div class="detalle" id="detalle3">
+            <p><b>¿Qué es?</b> Es avanzar con el balón mediante pequeños toques.</p>
+            <p><b>Importancia:</b> Permite desplazarse por la cancha y buscar espacios.</p>
+            <p><b>Ejercicio:</b> Conduce el balón lentamente entre conos, alternando ambos pies.</p>
+        </div>
+    </section>
+
+    <section class="tarjeta">
+        <h3>4. Regate y fintas</h3>
+        <p>Conoce movimientos para superar a un adversario.</p>
+        <button onclick="mostrar(4)">Ver contenido</button>
+        <div class="detalle" id="detalle4">
+            <p><b>¿Qué es?</b> El regate permite superar a un rival mediante movimientos y cambios de dirección.</p>
+            <p><b>Importancia:</b> Ayuda a conservar el balón y encontrar oportunidades de juego.</p>
+            <p><b>Ejercicio:</b> Practica cambios de dirección con el balón entre conos.</p>
+        </div>
+    </section>
+
+    <section class="tarjeta">
+        <h3>5. Remate al arco</h3>
+        <p>Aprende a realizar tiros con precisión y dirección.</p>
+        <button onclick="mostrar(5)">Ver contenido</button>
+        <div class="detalle" id="detalle5">
+            <p><b>¿Qué es?</b> Es golpear el balón con la intención de marcar un gol.</p>
+            <p><b>Importancia:</b> Permite finalizar una jugada de ataque.</p>
+            <p><b>Ejercicio:</b> Practica tiros suaves hacia diferentes zonas de la portería.</p>
+        </div>
+    </section>
+
+    <section class="tarjeta">
+        <h3>6. Coordinación y desplazamiento</h3>
+        <p>Mejora tus movimientos y coordinación durante el juego.</p>
+        <button onclick="mostrar(6)">Ver contenido</button>
+        <div class="detalle" id="detalle6">
+            <p><b>¿Qué es?</b> Es la capacidad de coordinar los movimientos del cuerpo durante el juego.</p>
+            <p><b>Importancia:</b> Ayuda a desplazarse, cambiar de dirección y mantener el equilibrio.</p>
+            <p><b>Ejercicio:</b> Practica desplazamientos suaves y cambios de dirección sin balón.</p>
+        </div>
+    </section>
+
+    <button class="volver" onclick="history.back()">
+        ← Volver
+    </button>
+
+</main>
+
+<script>
+function mostrar(numero) {
+    const contenido = document.getElementById("detalle" + numero);
+
+    if (contenido.style.display === "block") {
+        contenido.style.display = "none";
+    } else {
+        contenido.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

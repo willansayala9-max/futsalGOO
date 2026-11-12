@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil del jugador | FutsalGot</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 25px 15px 35px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #f5f9ff;
+      background:
+        radial-gradient(ellipse at 10% 10%, #123c70 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 90%, #302052 0%, transparent 40%),
+        linear-gradient(145deg, #06101f, #0a2447 60%, #06101f);
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .logo span {
+      color: #10c9e8;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      padding: 7px 13px;
+      margin-bottom: 12px;
+      border: 1px solid #167d9a;
+      border-radius: 25px;
+      color: #80eaff;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(27px, 5vw, 37px);
+      margin-bottom: 10px;
+    }
+
+    .subtitulo {
+      color: #c1d7ef;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .tarjeta {
+      padding: 23px;
+      margin-bottom: 18px;
+      border: 1px solid #245582;
+      border-radius: 20px;
+      background: rgba(8, 27, 52, 0.94);
+      box-shadow: 0 12px 30px #0003;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .ayuda {
+      color: #a7c5e5;
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .opciones {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .opcion {
+      min-height: 52px;
+      padding: 10px 7px;
+      border: 1px solid #2878b6;
+      border-radius: 12px;
+      background: #0b1d35;
+      color: #f1f7ff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .opcion:hover {
+      border-color: #10c9e8;
+      background: #12395b;
+    }
+
+    .opcion.seleccionada {
+      background: linear-gradient(120deg, #087cf0, #08b9d8);
+      border-color: #8cefff;
+      color: white;
+      box-shadow: 0 0 15px #08b9d844;
+    }
+
+    .mensaje {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #512235;
+      color: #ffd7e0;
+      font-size: 14px;
+    }
+
+    .mensaje.visible {
+      display: block;
+    }
+
+    .continuar {
+      width: 100%;
+      min-height: 57px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(100deg, #a36bff, #477fff, #10c9e8);
+      color: white;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .continuar:hover {
+      filter: brightness(1.12);
+    }
+
+    .volver {
+      display: block;
+      margin: 17px auto 0;
+      border: 0;
+      background: transparent;
+      color: #9bcfff;
+      font-size: 14px;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #91adca;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 560px) {
+      .tarjeta {
+        padding: 18px 14px;
+      }
+
+      .opciones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .opcion {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="contenedor">
+    <header>
+      <div class="logo">⚽ Futsal<span>Got</span></div>
+      <div class="etiqueta">PERSONALIZA TU EXPERIENCIA</div>
+      <h1>Perfil del jugador</h1>
+      <p class="subtitulo">
+        Selecciona tu categoría y posición para recibir
+        contenido relacionado con el futsal.
+      </p>
+    </header>
+
+    <section class="tarjeta">
+      <h2>1. ¿A qué categoría perteneces?</h2>
+      <p class="ayuda">Selecciona una sola categoría.</p>
+
+      <div class="opciones" id="categorias">
+        <button class="opcion" type="button" data-valor="SUB-9">SUB-9</button>
+        <button class="opcion" type="button" data-valor="SUB-12">SUB-12</button>
+        <button class="opcion" type="button" data-valor="SUB-14">SUB-14</button>
+        <button class="opcion" type="button" data-valor="SUB-16">SUB-16</button>
+        <button class="opcion" type="button" data-valor="SUB-18">SUB-18</button>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>2. ¿Qué posición juegas?</h2>
+      <p class="ayuda">Selecciona tu posición habitual.</p>
+
+      <div class="opciones" id="posiciones">
+        <button class="opcion" type="button" data-valor="Arquero">Arquero</button>
+        <button class="opcion" type="button" data-valor="Cierre">Cierre</button>
+        <button class="opcion" type="button" data-valor="Ala">Ala</button>
+        <button class="opcion" type="button" data-valor="Pívot">Pívot</button>
+        <button class="opcion" type="button" data-valor="Sin posición definida">
+          Sin posición definida
+        </button>
+      </div>
+
+      <p class="mensaje" id="mensaje" role="alert">
+        Selecciona una categoría y una posición.
+      </p>
+    </section>
+
+    <button class="continuar" type="button" id="btnContinuar">
+      Continuar →
+    </button>
+
+    <footer>
+      FutsalGot · Aprende a tu ritmo<br>
+      Técnicas, estrategias y aprendizaje del futsal.
+    </footer>
+
+    <button class="volver" type="button" id="btnVolver">
+      ← Volver al inicio
+    </button>
+  </main>
+
+<script>
+let categoriaSeleccionada = "";
+let posicionSeleccionada = "";
+
+function activarOpciones(id, callback) {
+  const contenedor = document.getElementById(id);
+  const botones = contenedor.querySelectorAll(".opcion");
+
+  botones.forEach(function(boton) {
+    boton.addEventListener("click", function() {
+      botones.forEach(function(otro) {
+        otro.classList.remove("seleccionada");
+      });
+
+      boton.classList.add("seleccionada");
+      callback(boton.dataset.valor);
+
+      document.getElementById("mensaje").classList.remove("visible");
+    });
+  });
+}
+
+activarOpciones("categorias", function(valor) {
+  categoriaSeleccionada = valor;
+});
+
+activarOpciones("posiciones", function(valor) {
+  posicionSeleccionada = valor;
+});
+
+document.getElementById("btnContinuar").addEventListener("click", function() {
+  const mensaje = document.getElementById("mensaje");
+
+  if (!categoriaSeleccionada || !posicionSeleccionada) {
+    mensaje.textContent = "Selecciona una categoría y una posición antes de continuar.";
+    mensaje.classList.add("visible");
+    return;
+  }
+
+  const destino = "menu%20perfil.html?categoria=" +
+    encodeURIComponent(categoriaSeleccionada) +
+    "&posicion=" +
+    encodeURIComponent(posicionSeleccionada);
+
+  window.location.href = destino;
+});
+
+document.getElementById("btnVolver").addEventListener("click", function() {
+  window.location.href = "index.html";
+});
+</script>
+</body>
+</html>

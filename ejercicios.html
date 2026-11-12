@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ejercicios de Futsal | FutsalGot</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #06152f, #063b70, #17134b);
+}
+
+main { max-width: 1000px; margin: auto; }
+
+h1 {
+  text-align: center;
+  color: #10c9e8;
+  font-size: 32px;
+}
+
+.intro {
+  text-align: center;
+  color: #d6eaff;
+}
+
+.perfil {
+  padding: 18px;
+  margin: 22px 0;
+  background: #10294a;
+  border: 1px solid #10c9e8;
+  border-radius: 15px;
+  line-height: 1.8;
+}
+
+.perfil strong { color: #10c9e8; }
+
+#ejercicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 18px;
+}
+
+.tarjeta {
+  padding: 15px;
+  background: #10294a;
+  border: 1px solid #10c9e8;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px #0005;
+  overflow: hidden;
+}
+
+.tarjeta h2 {
+  color: #10c9e8;
+  font-size: 20px;
+}
+
+.tarjeta img,
+.tarjeta video {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin: 12px 0;
+  background: #06152f;
+}
+
+.tarjeta img {
+  height: 190px;
+  object-fit: cover;
+}
+
+.tarjeta video { max-height: 240px; }
+
+.tarjeta p { line-height: 1.5; }
+
+.objetivo {
+  padding: 12px;
+  background: #17265b;
+  border-left: 4px solid #a36bff;
+  border-radius: 8px;
+}
+
+.consejos {
+  margin-top: 22px;
+  padding: 18px;
+  background: #171747;
+  border: 1px solid #a36bff;
+  border-radius: 14px;
+  line-height: 1.8;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #087cf0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover { background: #10a8e8; }
+.cambiar { background: #8146e8; }
+
+.nota { color: #d6eaff; font-size: 14px; }
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+  color: #a9d9ff;
+}
+
+@media (max-width: 400px) {
+  body { padding: 12px; }
+  h1 { font-size: 26px; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <h1>⚽ FutsalGot</h1>
+  <p class="intro">Ejercicios de futsal: practica, aprende y mejora tu juego.</p>
+
+  <div class="perfil">
+    <strong>Tu perfil seleccionado</strong><br>
+    Categoría: <span id="categoria"></span><br>
+    Posición: <span id="posicion"></span>
+    <p id="mensaje"></p>
+  </div>
+
+  <h2>Ejercicios de futsal</h2>
+  <p class="nota">
+    Realiza las actividades con supervisión y adapta su dificultad a tu categoría.
+  </p>
+
+  <div id="ejercicios"></div>
+
+  <section class="consejos">
+    <h2>💡 Consejos para practicar</h2>
+    <ul>
+      <li>Calienta antes de comenzar.</li>
+      <li>Practica el control con la planta del pie y los pases.</li>
+      <li>Comunícate con tus compañeros.</li>
+      <li>Hidrátate y descansa cuando lo necesites.</li>
+    </ul>
+  </section>
+
+  <button onclick="volverMenu()">← Volver al menú</button>
+  <button class="cambiar" onclick="cambiarPerfil()">Cambiar perfil</button>
+
+  <footer>FutsalGot · Técnica · Estrategia · Equipo · Pasión</footer>
+</main>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+const categoria = parametros.get("categoria") || "SUB-12";
+const posicion = parametros.get("posicion") || "Cierre";
+
+document.getElementById("categoria").textContent = categoria;
+document.getElementById("posicion").textContent = posicion;
+
+const esArquero = posicion.toLowerCase() === "arquero";
+
+const consejosCategoria = {
+  "SUB-9": "Practica despacio con actividades cortas y sencillas.",
+  "SUB-12": "Refuerza el control, los pases y la coordinación.",
+  "SUB-14": "Combina la técnica con decisiones sencillas de juego.",
+  "SUB-16": "Trabaja la precisión y la velocidad de ejecución.",
+  "SUB-18": "Practica la técnica en situaciones de juego colectivo."
+};
+
+document.getElementById("mensaje").textContent =
+  (esArquero
+    ? "Ejercicios específicos para el arquero. "
+    : "Ejercicios para jugadores de campo. ") +
+  (consejosCategoria[categoria] || consejosCategoria["SUB-12"]);
+
+const campo = [
+  {
+    titulo: "Pases en parejas",
+    descripcion: "Realiza pases cortos con el interior del pie y controla el balón con la planta antes de devolverlo.",
+    objetivo: "Mejorar la precisión del pase y la recepción.",
+    imagen: "imagenes/pases.jpg",
+    video: "videos/pases.mp4"
+  },
+  {
+    titulo: "Conducción entre conos",
+    descripcion: "Conduce el balón en zigzag entre conos, manteniendo el control y levantando la mirada.",
+    objetivo: "Mejorar el dominio y la coordinación.",
+    imagen: "imagenes/conduccion.jpg",
+    video: "videos/conduccion.mp4"
+  },
+  {
+    titulo: "Rondo de futsal",
+    descripcion: "En un grupo pequeño, conserva el balón mediante pases mientras otro jugador intenta recuperarlo.",
+    objetivo: "Mejorar la posesión y la toma de decisiones.",
+    imagen: "imagenes/rondo.jpg",
+    video: "videos/rondo.mp4"
+  },
+  {
+    titulo: "Finalización",
+    descripcion: "Recibe un pase, controla el balón y remata hacia la portería.",
+    objetivo: "Mejorar la precisión del remate.",
+    imagen: "imagenes/remate.jpg",
+    video: "videos/remate.mp4"
+  },
+  {
+    titulo: "Transición defensa-ataque",
+    descripcion: "Tras recuperar el balón, busca un pase seguro y avanza con tus compañeros.",
+    objetivo: "Mejorar la reacción y el juego colectivo.",
+    imagen: "imagenes/transicion.jpg",
+    video: "videos/transicion.mp4"
+  },
+  {
+    titulo: "Pase y desmarque",
+    descripcion: "Pasa el balón y muévete hacia un espacio libre para volver a recibirlo.",
+    objetivo: "Aprender a crear opciones de pase.",
+    imagen: "imagenes/desmarque.jpg",
+    video: "videos/desmarque.mp4"
+  }
+];
+
+const arquero = [
+  {
+    titulo: "Posición básica",
+    descripcion: "Practica una postura equilibrada, con las rodillas ligeramente flexionadas y la mirada en el balón.",
+    objetivo: "Prepararte para responder a un remate.",
+    imagen: "imagenes/arquero-posicion.jpg",
+    video: "videos/arquero-posicion.mp4"
+  },
+  {
+    titulo: "Recepción del balón",
+    descripcion: "Con un compañero, practica recibir balones suaves con las manos y asegurar su control.",
+    objetivo: "Mejorar la seguridad en la recepción.",
+    imagen: "imagenes/arquero-recepcion.jpg",
+    video: "videos/arquero-recepcion.mp4"
+  },
+  {
+    titulo: "Desplazamiento lateral",
+    descripcion: "Muévete de lado a lado frente a la portería manteniendo el equilibrio.",
+    objetivo: "Mejorar el posicionamiento.",
+    imagen: "imagenes/arquero-desplazamiento.jpg",
+    video: "videos/arquero-desplazamiento.mp4"
+  },
+  {
+    titulo: "Reacción a pases",
+    descripcion: "Practica responder a balones suaves enviados a distintas zonas.",
+    objetivo: "Mejorar la coordinación y la reacción.",
+    imagen: "imagenes/arquero-reaccion.jpg",
+    video: "videos/arquero-reaccion.mp4"
+  },
+  {
+    titulo: "Distribución del balón",
+    descripcion: "Practica pases con el pie y lanzamientos controlados hacia un compañero libre.",
+    objetivo: "Iniciar el ataque con precisión.",
+    imagen: "imagenes/arquero-distribucion.jpg",
+    video: "videos/arquero-distribucion.mp4"
+  },
+  {
+    titulo: "Comunicación defensiva",
+    descripcion: "Coordina con tus compañeros para cubrir espacios y organizar la defensa.",
+    objetivo: "Mejorar la organización del equipo.",
+    imagen: "imagenes/arquero-comunicacion.jpg",
+    video: "videos/arquero-comunicacion.mp4"
+  }
+];
+
+const lista = esArquero ? arquero : campo;
+const contenedor = document.getElementById("ejercicios");
+
+lista.forEach((ejercicio, indice) => {
+  const tarjeta = document.createElement("section");
+  tarjeta.className = "tarjeta";
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = (indice + 1) + ". " + ejercicio.titulo;
+
+  const imagen = document.createElement("img");
+  imagen.src = ejercicio.imagen;
+  imagen.alt = ejercicio.titulo + " de futsal";
+  imagen.onerror = function() {
+    this.style.display = "none";
+  };
+
+  const descripcion = document.createElement("p");
+  descripcion.textContent = ejercicio.descripcion;
+
+  const objetivo = document.createElement("p");
+  objetivo.className = "objetivo";
+  objetivo.textContent = "Objetivo: " + ejercicio.objetivo;
+
+  const video = document.createElement("video");
+  video.controls = true;
+  video.preload = "metadata";
+  video.setAttribute("playsinline", "");
+
+  const fuente = document.createElement("source");
+  fuente.src = ejercicio.video;
+  fuente.type = "video/mp4";
+  video.appendChild(fuente);
+
+  const nota = document.createElement("p");
+  nota.className = "nota";
+  nota.textContent = "Agrega tu video en: " + ejercicio.video;
+
+  tarjeta.append(titulo, imagen, descripcion, objetivo, video, nota);
+  contenedor.appendChild(tarjeta);
+});
+
+function volverMenu() {
+  window.location.href =
+    "menu%20perfil.html?categoria=" +
+    encodeURIComponent(categoria) +
+    "&posicion=" + encodeURIComponent(posicion);
+}
+
+function cambiarPerfil() {
+  window.location.href = "perfil.html";
+}
+</script>
+</body>
+</html>

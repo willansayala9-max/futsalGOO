@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FutsalApp</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #06152b;
+            color: white;
+        }
+
+        /* Pantalla de bienvenida */
+        .inicio {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    rgba(3, 12, 35, 0.45),
+                    rgba(3, 12, 35, 0.80)
+                ),
+                url("fondo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Logo de la aplicación */
+        .logo {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 25px;
+        }
+
+        /* Texto de bienvenida */
+        h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 16px;
+            color: #d9e8ff;
+            margin-bottom: 35px;
+        }
+
+        /* Botón ingresar */
+        .boton {
+            display: inline-block;
+            width: 100%;
+            max-width: 320px;
+            padding: 17px;
+            border-radius: 40px;
+            background: linear-gradient(
+                90deg, #00c878, #00a8d8
+            );
+            color: white;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: bold;
+            border: 2px solid #62e9ff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 20px #00c878;
+        }
+
+        .pie {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #b8cce8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="inicio">
+
+        <!-- Logo -->
+        <img
+            src="logo.jpg"
+            alt="Logo de FutsalApp"
+            class="logo"
+        >
+
+        <!-- Bienvenida -->
+        <h1>¡Bienvenido!</h1>
+
+        <p>
+            Aprende, practica y mejora tus habilidades
+            en el futsal.
+        </p>
+
+        <!-- Botón de ingreso -->
+        <a href="perfil.html" class="boton">
+            Ingresar →
+        </a>
+
+        <div class="pie">
+            Tu progreso comienza aquí ⚽
+        </div>
+
+    </section>
+
+</body>
+</html>

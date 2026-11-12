@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategias | FutsalGot</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #06152f, #073b78, #111b49);
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.logo {
+    color: #10c9e8;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: 30px;
+}
+
+header p {
+    color: #dceaff;
+    line-height: 1.5;
+}
+
+.perfil {
+    max-width: 1000px;
+    margin: 10px auto 28px;
+    padding: 18px;
+    border-radius: 16px;
+    text-align: center;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.perfil strong {
+    color: #10c9e8;
+}
+
+.perfil p {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+h2.titulo {
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0 22px;
+}
+
+h2.titulo span {
+    color: #10c9e8;
+}
+
+.tarjetas {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    background: white;
+    color: #27364b;
+    border-radius: 17px;
+    overflow: hidden;
+    box-shadow: 0 7px 22px rgba(0,0,0,.25);
+    transition: transform .2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+}
+
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #087cf0, #10c9e8);
+}
+
+.contenido {
+    padding: 17px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #e2f8ff;
+    color: #0875b6;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.contenido h3 {
+    margin: 13px 0 9px;
+    color: #10477e;
+    font-size: 19px;
+}
+
+.contenido p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #536176;
+}
+
+.video-titulo {
+    margin-top: 18px;
+    padding-top: 13px;
+    border-top: 1px solid #e0e7f0;
+    color: #075ca5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+video {
+    display: block;
+    width: 100%;
+    height: 175px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #101a2b;
+}
+
+.nota-video {
+    font-size: 12px !important;
+    color: #758197 !important;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 32px auto 20px;
+}
+
+button {
+    border: none;
+    border-radius: 25px;
+    padding: 13px 22px;
+    background: #10c9e8;
+    color: #06152f;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+}
+
+.secundario {
+    background: #a36bff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #c4d8f1;
+    font-size: 12px;
+    padding: 10px;
+}
+
+@media (max-width: 850px) {
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 540px) {
+    body {
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FUTSALGOT</div>
+    <h1>⚽ Estrategias de Futsal</h1>
+    <p>Aprende a organizar al equipo, atacar y defender mejor.</p>
+</header>
+
+<section class="perfil">
+    <strong id="datosPerfil">Tu perfil de jugador</strong>
+    <p id="recomendacion">
+        Conoce las estrategias y aprende cómo aplicarlas durante un partido.
+    </p>
+</section>
+
+<h2 class="titulo">Aprende las <span>estrategias</span></h2>
+
+<main class="tarjetas">
+
+    <!-- ESTRATEGIA 1 -->
+    <article class="tarjeta">
+        <img src="imagenes/ataque-equipo.jpg"
+             alt="Jugadores realizando un ataque"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/087cf0/ffffff?text=Ataque+en+equipo';">
+
+        <div class="contenido">
+            <span class="etiqueta">ATAQUE</span>
+            <h3>1. Ataque en equipo</h3>
+            <p>Los jugadores avanzan coordinadamente, realizan pases y buscan espacios para crear oportunidades de gol.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/ataque-equipo.jpg">
+                <source src="videos/ataque-equipo.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+    <!-- ESTRATEGIA 2 -->
+    <article class="tarjeta">
+        <img src="imagenes/defensa-equipo.jpg"
+             alt="Jugadores organizando la defensa"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/087c88/ffffff?text=Defensa+organizada';">
+
+        <div class="contenido">
+            <span class="etiqueta">DEFENSA</span>
+            <h3>2. Defensa organizada</h3>
+            <p>El equipo cubre espacios, marca a los rivales y trabaja unido para recuperar el balón.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/defensa-equipo.jpg">
+                <source src="videos/defensa-equipo.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+    <!-- ESTRATEGIA 3 -->
+    <article class="tarjeta">
+        <img src="imagenes/pases-movimiento.jpg"
+             alt="Pases y movimiento en futsal"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/7550d9/ffffff?text=Pases+y+movimiento';">
+
+        <div class="contenido">
+            <span class="etiqueta">COOPERACIÓN</span>
+            <h3>3. Pases y movimiento</h3>
+            <p>Después de pasar el balón, el jugador se mueve para ofrecer otra opción de pase y ayudar a sus compañeros.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/pases-movimiento.jpg">
+                <source src="videos/pases-movimiento.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+    <!-- ESTRATEGIA 4 -->
+    <article class="tarjeta">
+        <img src="imagenes/transicion-futsal.jpg"
+             alt="Transición rápida en futsal"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/e58a24/ffffff?text=Transicion+rapida';">
+
+        <div class="contenido">
+            <span class="etiqueta">TRANSICIÓN</span>
+            <h3>4. Transición rápida</h3>
+            <p>Es el cambio de defensa a ataque cuando se recupera el balón, o de ataque a defensa cuando se pierde.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/transicion-futsal.jpg">
+                <source src="videos/transicion-futsal.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+    <!-- ESTRATEGIA 5 -->
+    <article class="tarjeta">
+        <img src="imagenes/sistema-juego.jpg"
+             alt="Sistema de juego en futsal"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/146cbe/ffffff?text=Sistemas+de+juego';">
+
+        <div class="contenido">
+            <span class="etiqueta">ORGANIZACIÓN</span>
+            <h3>5. Sistemas de juego</h3>
+            <p>Son formas de distribuir a los jugadores en la cancha. Algunos sistemas utilizados son 2-2, 3-1 y 4-0.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/sistema-juego.jpg">
+                <source src="videos/sistema-juego.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+    <!-- ESTRATEGIA 6 -->
+    <article class="tarjeta">
+        <img src="imagenes/saque-portero.jpg"
+             alt="Salida de juego desde el arquero"
+             onerror="this.onerror=null;this.src='https://placehold.co/600x350/147d9d/ffffff?text=Salida+del+arquero';">
+
+        <div class="contenido">
+            <span class="etiqueta">SALIDA DE JUEGO</span>
+            <h3>6. Salida desde el arquero</h3>
+            <p>El equipo inicia una jugada desde su arquero mediante pases seguros y movimientos coordinados.</p>
+
+            <div class="video-titulo">▶ Video demostrativo</div>
+            <video controls preload="none" poster="imagenes/saque-portero.jpg">
+                <source src="videos/salida-arquero.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="nota-video">Aquí podrás ver el video de esta estrategia.</p>
+        </div>
+    </article>
+
+</main>
+
+<div class="botones">
+    <button onclick="volverMenu()">← Volver al menú</button>
+    <button class="secundario" onclick="volverPerfil()">Volver al perfil</button>
+</div>
+
+<footer>
+    FutsalGot · Estrategias y técnicas de Futsal
+</footer>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+
+const categoria =
+    parametros.get("categoria") ||
+    parametros.get("Categoria") ||
+    "No definida";
+
+const posicion =
+    parametros.get("posicion") ||
+    parametros.get("Posicion") ||
+    "Sin posición definida";
+
+document.getElementById("datosPerfil").textContent =
+    "Categoría: " + categoria + " | Posición: " + posicion;
+document.getElementById("datosPerfil").textContent =
+    "Categoría: " + categoria + " | Posición: " + posicion;
+
+if (posicion.toLowerCase().includes("arquero")) {
+    document.getElementById("recomendacion").textContent =
+        "Aprende cómo apoyar al equipo desde la portería, organizar la defensa e iniciar jugadas.";
+} else {
+    document.getElementById("recomendacion").textContent =
+        "Contenido para " + categoria +
+        ". Aprende a atacar, defender, realizar transiciones y jugar en equipo.";
+}
+
+function volverMenu() {
+    window.location.href =
+        "menu perfil.html?categoria=" + encodeURIComponent(categoria) +
+        "&posicion=" + encodeURIComponent(posicion);
+}
+
+function volverPerfil() {
+    window.location.href = "perfil.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú principal | FutsalGot</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 15px;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #06152f, #063b70, #17134b);
+}
+
+.contenedor {
+  max-width: 650px;
+  margin: auto;
+}
+
+h1 {
+  color: #10c9e8;
+  font-size: 32px;
+}
+
+.perfil {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid #10c9e8;
+  border-radius: 15px;
+  background: #10294a;
+  line-height: 1.8;
+}
+
+.categoria {
+  display: block;
+  width: 100%;
+  padding: 18px 12px;
+  margin: 12px 0;
+  border: 1px solid #10c9e8;
+  border-radius: 12px;
+  background: #0b5790;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.categoria:hover {
+  background: #087cf0;
+}
+
+.volver {
+  margin-top: 20px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #a36bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<h1>⚽ FutsalGot</h1>
+<h2>Menú principal</h2>
+
+<div class="perfil">
+  <strong>Tu perfil seleccionado</strong><br>
+  Categoría: <span id="categoria"></span><br>
+  Posición: <span id="posicion"></span>
+</div>
+
+<p>Selecciona lo que deseas aprender:</p>
+
+<button class="categoria" onclick="abrir('historia.html')">
+  Historia
+</button>
+
+<button class="categoria" onclick="abrirTecnicas()">
+  Técnicas
+</button>
+
+<button class="categoria" onclick="abrirEstrategias()">
+  Estrategias y sistema de juego
+</button>
+
+<button class="categoria" onclick="abrirEjercicios()">
+  Ejercicios
+</button>
+
+<button class="categoria" onclick="abrir('jugadas.html')">
+  Jugadas
+</button>
+
+<button class="volver" onclick="volverPerfil()">
+  ← Cambiar perfil
+</button>
+
+</main>
+
+<script>
+
+const parametros = new URLSearchParams(window.location.search);
+
+const categoria =
+  parametros.get("categoria") ||
+  localStorage.getItem("categoria") ||
+  "SUB-12";
+
+const posicion =
+  parametros.get("posicion") ||
+  localStorage.getItem("posicion") ||
+  "Jugador";
+
+localStorage.setItem("categoria", categoria);
+localStorage.setItem("posicion", posicion);
+
+document.getElementById("categoria").textContent = categoria;
+document.getElementById("posicion").textContent = posicion;
+
+function abrir(pagina) {
+  const destino = pagina +
+    "?categoria=" + encodeURIComponent(categoria) +
+    "&posicion=" + encodeURIComponent(posicion);
+
+  window.location.href = destino;
+}
+
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\s-]+/g, "")
+    .trim();
+}
+
+function abrirTecnicas() {
+
+  const categoriaActual = normalizar(categoria);
+  const posicionActual = normalizar(posicion);
+
+  if (categoriaActual === "sub9" && posicionActual === "cierre") {
+    window.location.href = "tecnicas sub9 cierre.html";
+    return;
+  }
+
+  if (categoriaActual === "sub9" && posicionActual === "ala") {
+    window.location.href = "tecnicas sub9 ala.html";
+    return;
+  }
+
+  if (categoriaActual === "sub9" && posicionActual === "pivot") {
+    window.location.href = "tecnicas sub9 pivot.html";
+    return;
+  }
+
+  if (
+    categoriaActual === "sub9" &&
+    (
+      posicionActual === "sin" ||
+      posicionActual === "sinposiciondefinida" ||
+      posicionActual === "jugador"
+    )
+  ) {
+    window.location.href =
+      "tecnicas.html?categoria=SUB-9&posicion=" +
+      encodeURIComponent("sin posición definida");
+    return;
+  }
+
+  if (posicionActual === "arquero") {
+    abrir("arquero.html");
+    return;
+  }
+
+  abrir("tecnicas.html");
+}
+
+function abrirEstrategias() {
+
+  const categoriaActual = normalizar(categoria);
+  const posicionActual = normalizar(posicion);
+
+  if (categoriaActual === "sub9") {
+
+    const paginas = {
+      arquero: "estrategias-sub9-arquero.html",
+      cierre: "estrategias-sub9-cierre.html",
+      ala: "estrategias-sub9-ala.html",
+      pivot: "estrategias-sub9-pivot.html"
+    };
+
+    const destino = paginas[posicionActual];
+
+    if (destino) {
+      window.location.href = destino;
+    } else {
+      alert("No se encontró una página para esa posición.");
+    }
+
+  } else {
+    abrir("estrategias.html");
+  }
+}
+
+// FUNCIÓN PARA ABRIR LOS EJERCICIOS
+
+function abrirEjercicios() {
+
+  const categoriaActual = normalizar(categoria);
+  const posicionActual = normalizar(posicion);
+
+  if (categoriaActual === "sub9") {
+
+    const paginas = {
+      arquero: "ejercicios-sub9-arquero.html",
+      cierre: "ejercicios-sub9-cierre.html",
+      ala: "ejercicios-sub9-ala.html",
+      pivot: "ejercicios-sub9-pivot.html"
+    };
+
+    const destino = paginas[posicionActual];
+
+    if (destino) {
+      window.location.href = destino;
+    } else {
+      alert("No se encontró una página de ejercicios para esa posición.");
+    }
+
+  } else {
+    abrir("ejercicios.html");
+  }
+}
+
+function volverPerfil() {
+  window.location.href = "perfil.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Técnicas de FutsalGO</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #03112d, #073b78, #10123b);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+h1 {
+  color: #16d9ff;
+  margin-bottom: 8px;
+}
+
+.perfil {
+  color: #dcecff;
+  margin-bottom: 20px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  color: white;
+  background: #087cf0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #10bfe8;
+  color: #03112d;
+}
+
+.intro {
+  text-align: center;
+  color: #dcecff;
+  margin-bottom: 25px;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.tarjeta {
+  background: rgba(10, 34, 75, 0.95);
+  border: 1px solid #087cf0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.3);
+}
+
+.imagen {
+  height: 160px;
+  width: 100%;
+  background: linear-gradient(135deg, #0b63b6, #151743);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d8f5ff;
+  text-align: center;
+  padding: 12px;
+}
+
+.imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contenido {
+  padding: 16px;
+}
+
+.contenido h2 {
+  color: #16d9ff;
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.contenido p {
+  line-height: 1.5;
+  color: #e2ecff;
+}
+
+.pista {
+  color: #a8dfff;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 35px;
+  color: #a8dfff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚽ Técnicas de FutsalGO</h1>
+  <div class="perfil">
+    Categoría: <strong id="categoria"></strong>
+    |
+    Posición: <strong id="posicion"></strong>
+  </div>
+
+</header>
+
+<p class="intro" id="introduccion">
+  Aprende y mejora tus habilidades de futsal.
+</p>
+
+<main class="contenedor" id="tarjetas"></main>
+
+<footer>
+  FutsalGO · Aprende, practica y mejora
+</footer>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+
+const categoria =
+  parametros.get("categoria") ||
+  localStorage.getItem("categoria") ||
+  "SUB-12";
+
+const posicion =
+  parametros.get("posicion") ||
+  localStorage.getItem("posicion") ||
+  "Jugador";
+
+document.getElementById("categoria").textContent = categoria;
+document.getElementById("posicion").textContent = posicion;
+
+const tecnicasGenerales = [
+  {
+    nombre: "Pase",
+    imagen: "imagenes/pase.jpg",
+    descripcion: "Envía el balón a un compañero con precisión.",
+    pista: "Practica pases cortos con ambos pies."
+  },
+  {
+    nombre: "Control del balón",
+    imagen: "imagenes/control.jpg",
+    descripcion: "Recibe el balón y mantenlo cerca de tus pies.",
+    pista: "Practica detener el balón con la planta."
+  },
+  {
+    nombre: "Conducción",
+    imagen: "imagenes/conduccion.jpg",
+    descripcion: "Avanza llevando el balón sin perder el control.",
+    pista: "Usa ambos pies y cambia de dirección."
+  },
+  {
+    nombre: "Regate",
+    imagen: "imagenes/regate.jpg",
+    descripcion: "Supera obstáculos mediante movimientos controlados.",
+    pista: "Comienza lentamente y mejora poco a poco."
+  },
+  {
+    nombre: "Remate",
+    imagen: "imagenes/remate.jpg",
+    descripcion: "Golpea el balón intentando dirigirlo hacia la portería.",
+    pista: "Prioriza la precisión antes que la fuerza."
+  },
+  {
+    nombre: "Desmarque",
+    imagen: "imagenes/desmarque.jpg",
+    descripcion: "Muévete hacia un espacio libre para recibir un pase.",
+    pista: "Mira dónde están tus compañeros."
+  }
+];
+
+/* TÉCNICAS ESPECÍFICAS PARA SUB-9 */
+const tecnicasSub9 = {
+  "arquero": [
+    {
+      nombre: "Postura básica",
+      imagen: "imagenes/posicion-arquero.jpg",
+      descripcion: "Colócate frente a la portería con las rodillas ligeramente flexionadas y las manos preparadas.",
+      pista: "Mantén la vista en el balón."
+    },
+    {
+      nombre: "Recepción del balón",
+      imagen: "imagenes/blocaje.jpg",
+      descripcion: "Practica recibir balones suaves con ambas manos.",
+      pista: "Asegura el balón contra el cuerpo cuando sea necesario."
+    },
+    {
+      nombre: "Desplazamiento lateral",
+      imagen: "imagenes/desplazamiento.jpg",
+      descripcion: "Muévete de lado a lado para colocarte frente al balón.",
+      pista: "Da pasos cortos y mantén el equilibrio."
+    },
+    {
+      nombre: "Reacción",
+      imagen: "imagenes/reaccion.jpg",
+      descripcion: "Responde a lanzamientos suaves dirigidos a distintas zonas de la portería.",
+      pista: "Practica con supervisión y sin remates fuertes."
+    },
+    {
+      nombre: "Pase con la mano",
+      imagen: "imagenes/distribucion.jpg",
+      descripcion: "Entrega el balón a un compañero cercano con precisión.",
+      pista: "Mira antes de distribuir."
+    }
+  ],
+
+  "cierre": [
+    {
+      nombre: "Posición defensiva",
+      imagen: "imagenes/marcaje.jpg",
+      descripcion: "Colócate entre el atacante y tu portería, manteniendo una postura equilibrada.",
+      pista: "Observa el balón y al rival."
+    },
+    {
+      nombre: "Interceptación de pases",
+      imagen: "imagenes/interceptacion.jpg",
+      descripcion: "Practica anticiparte a pases lentos entre compañeros.",
+      pista: "Lee la trayectoria del balón sin lanzarte."
+    },
+    {
+      nombre: "Pase seguro",
+      imagen: "imagenes/salida-balon.jpg",
+      descripcion: "Recibe el balón y pásalo a un compañero libre.",
+      pista: "Controla primero y después pasa."
+    },
+    {
+      nombre: "Control orientado",
+      imagen: "imagenes/control.jpg",
+      descripcion: "Recibe el balón y oriéntalo hacia un espacio libre.",
+      pista: "Practica con ambos pies."
+    },
+    {
+      nombre: "Cobertura defensiva",
+      imagen: "imagenes/marcaje.jpg",
+      descripcion: "Colócate cerca de un compañero para ayudarle si un rival lo supera.",
+      pista: "Comunícate con tu equipo."
+    }
+  ],
+
+  "ala": [
+    {
+      nombre: "Conducción por la banda",
+      imagen: "imagenes/conduccion-banda.jpg",
+      descripcion: "Avanza por el lateral de la cancha llevando el balón cerca de los pies.",
+      pista: "Practica con ambos pies y levanta la cabeza."
+    },
+    {
+      nombre: "Regate sencillo",
+      imagen: "imagenes/regate.jpg",
+      descripcion: "Supera conos con cambios de dirección como preparación para superar a un rival.",
+      pista: "Empieza despacio y controla el balón."
+    },
+    {
+      nombre: "Pase y desmarque",
+      imagen: "imagenes/combinacion-pases.jpg",
+      descripcion: "Pasa a un compañero y muévete a un espacio libre para volver a recibir.",
+      pista: "No te quedes quieto después del pase."
+    },
+    {
+      nombre: "Control orientado por la banda",
+      imagen: "imagenes/control.jpg",
+      descripcion: "Recibe el balón y llévalo hacia el espacio por el que puedes avanzar.",
+      pista: "Mira hacia dónde quieres dirigirte."
+    },
+    {
+      nombre: "Cambio de dirección",
+      imagen: "imagenes/conduccion.jpg",
+      descripcion: "Conduce el balón y cambia de dirección al llegar a una señal o cono.",
+      pista: "Usa el interior y el exterior del pie."
+    },
+    {
+      nombre: "Pase hacia el centro",
+      imagen: "imagenes/pase.jpg",
+      descripcion: "Desde una zona lateral, pasa el balón a un compañero situado más cerca del centro.",
+      pista: "Practica primero sin oposición."
+    },
+    {
+      nombre: "Remate después de conducir",
+      imagen: "imagenes/remate.jpg",
+      descripcion: "Conduce unos pasos y remata hacia una zona libre de la portería.",
+      pista: "Busca precisión y mantén el equilibrio."
+    }
+  ],
+
+  "pívot": [
+    {
+      nombre: "Control de espaldas",
+      imagen: "imagenes/control.jpg",
+      descripcion: "Recibe un pase dando la espalda a la portería y controla el balón.",
+      pista: "Mantén el equilibrio y siente dónde está el balón."
+    },
+    {
+      nombre: "Protección del balón",
+      imagen: "imagenes/proteccion-balon.jpg",
+      descripcion: "Mantén el balón cerca y coloca el cuerpo entre el balón y el defensor sin empujar.",
+      pista: "Usa una postura equilibrada."
+    },
+    {
+      nombre: "Giro con balón",
+      imagen: "imagenes/giro-balon.jpg",
+      descripcion: "Controla el balón y gira hacia un lado para mirar a la portería.",
+      pista: "Practica giros hacia ambos lados."
+    },
+    {
+      nombre: "Pase de apoyo",
+      imagen: "imagenes/pase.jpg",
+      descripcion: "Recibe un pase y devuélvelo a un compañero para ayudar a continuar la jugada.",
+      pista: "Asegura el control antes de pasar."
+    },
+    {
+      nombre: "Remate cercano",
+      imagen: "imagenes/finalizacion.jpg",
+      descripcion: "Recibe un pase corto y remata con suavidad hacia la portería.",
+      pista: "Apunta antes de golpear."
+    },
+    {
+      nombre: "Control y giro",
+      imagen: "imagenes/control.jpg",
+      descripcion: "Controla el balón, gira y conduce hacia un espacio libre.",
+      pista: "Realiza los movimientos sin apresurarte."
+    }
+  ],
+
+  "sin posición definida": [
+    {
+      nombre: "Pase básico",
+      imagen: "imagenes/pase.jpg",
+      descripcion: "Pasa el balón a un compañero usando el interior del pie.",
+      pista: "Apunta hacia los pies de tu compañero."
+    },
+    {
+      nombre: "Recepción del balón",
+      imagen: "imagenes/control.jpg",
+      descripcion: "Recibe un pase y detén el balón con la planta o el interior del pie.",
+      pista: "Relaja el pie al recibir."
+    },
+    {
+      nombre: "Conducción con ambos pies",
+      imagen: "imagenes/conduccion.jpg",
+      descripcion: "Avanza lentamente alternando el pie derecho y el izquierdo.",
+      pista: "Mantén el balón cerca."
+    },
+    {
+      nombre: "Regate entre conos",
+      imagen: "imagenes/regate.jpg",
+      descripcion: "Conduce el balón en zigzag entre conos separados.",
+      pista: "Mira al frente cuando puedas."
+    },
+    {
+      nombre: "Remate básico",
+      imagen: "imagenes/remate.jpg",
+      descripcion: "Golpea el balón hacia la portería desde una distancia corta.",
+      pista: "Practica la dirección antes que la fuerza."
+    },
+    {
+      nombre: "Pase y movimiento",
+      imagen: "imagenes/desmarque.jpg",
+      descripcion: "Pasa el balón y muévete a otro espacio para ofrecer ayuda.",
+      pista: "Trabaja con un compañero."
+    }
+  ]
+};
+
+function crearTarjeta(tecnica) {
+  const tarjeta = document.createElement("article");
+  tarjeta.className = "tarjeta";
+
+  const imagen = document.createElement("div");
+  imagen.className = "imagen";
+
+  const foto = document.createElement("img");
+  foto.src = tecnica.imagen;
+  foto.alt = tecnica.nombre;
+
+  foto.onerror = function() {
+    foto.remove();
+    imagen.textContent = "⚽ " + tecnica.nombre;
+  };
+
+  imagen.appendChild(foto);
+
+  const contenido = document.createElement("div");
+  contenido.className = "contenido";
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = tecnica.nombre;
+
+  const descripcion = document.createElement("p");
+  descripcion.textContent = tecnica.descripcion;
+
+  const pista = document.createElement("p");
+  pista.className = "pista";
+  pista.textContent = "Consejo: " + tecnica.pista;
+
+  contenido.append(titulo, descripcion, pista);
+  tarjeta.append(imagen, contenido);
+
+  return tarjeta;
+}
+
+function normalizarPosicion(valor) {
+  const texto = valor
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+
+  if (texto.includes("arquero") || texto.includes("portero")) {
+    return "arquero";
+  }
+
+  if (texto.includes("cierre") || texto === "defensa") {
+    return "cierre";
+  }
+
+  if (texto === "ala" || texto.includes("ala ")) {
+    return "ala";
+  }
+
+  if (texto.includes("pivot")) {
+    return "pívot";
+  }
+
+  return "sin posición definida";
+}
+
+const categoriaNormalizada = categoria
+  .toUpperCase()
+  .replace(/\s+/g, "")
+  .replace(/SUB(\d+)/, "SUB-$1");
+
+const posicionNormalizada = normalizarPosicion(posicion);
+
+let todasLasTecnicas;
+
+if (categoriaNormalizada === "SUB-9") {
+  // SUB-9: muestra las técnicas específicas de la posición elegida.
+  todasLasTecnicas = tecnicasSub9[posicionNormalizada] ||
+    tecnicasSub9["sin posición definida"];
+} else {
+  // Otras categorías conservan el contenido que ya tenía la página.
+  const tecnicasPorPosicion = {
+    "arquero": tecnicasSub9["arquero"],
+    "cierre": tecnicasSub9["cierre"],
+    "ala": tecnicasSub9["ala"],
+    "pívot": tecnicasSub9["pívot"]
+  };
+
+  const especificas = tecnicasPorPosicion[posicionNormalizada] || [];
+  todasLasTecnicas = [...especificas, ...tecnicasGenerales];
+}
+
+document.getElementById("introduccion").textContent =
+  "Técnicas de " + posicion + " · Categoría " + categoria +
+  ". Aprende paso a paso y practica de forma segura.";
+
+const contenedor = document.getElementById("tarjetas");
+contenedor.replaceChildren();
+
+todasLasTecnicas.forEach(function(tecnica) {
+  contenedor.appendChild(crearTarjeta(tecnica));
+});
+
+function volverMenu() {
+  window.location.href =
+    "menu%20perfil.html?categoria=" +
+    encodeURIComponent(categoria) +
+    "&posicion=" +
+    encodeURIComponent(posicion);
+}
+
+function cambiarPerfil() {
+  window.location.href = "perfil.html";
+}
+</script>
+  <div class="botones">
+    <button onclick="volverMenu()">Volver al menú</button>
+    <button onclick="cambiarPerfil()">Cambiar perfil</button>
+  </div>
+</body>
+</html>

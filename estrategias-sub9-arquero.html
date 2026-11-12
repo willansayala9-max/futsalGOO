@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategias - FutsalGot</title>
+
+<style>
+:root {
+    --azul: #087cf0;
+    --celeste: #10c9e8;
+    --morado: #a36bff;
+    --blanco: #f5f9ff;
+    --texto: #d3e4f8;
+    --fondo: #06101f;
+    --tarjeta: #112b4d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(145deg, #071326, #0a2447, #06101f);
+    color: var(--blanco);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 950px;
+    margin: auto;
+}
+
+.encabezado {
+    text-align: center;
+    padding: 25px 15px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #087cf0, #253c83, #7544b9);
+    box-shadow: 0 8px 25px #0006;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.logo span {
+    color: #10e5ff;
+}
+
+.encabezado h1 {
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+.encabezado p {
+    color: #e4f2ff;
+    font-size: 14px;
+}
+
+.subtitulo {
+    color: var(--celeste);
+    font-size: 21px;
+    margin: 25px 0 15px;
+}
+
+.introduccion {
+    background: #112b4d;
+    padding: 18px;
+    border-radius: 15px;
+    line-height: 1.6;
+    color: var(--texto);
+    border-left: 4px solid var(--celeste);
+    margin-bottom: 20px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.tarjeta {
+    background: linear-gradient(145deg, #112b4d, #091c35);
+    border: 1px solid #24517c;
+    border-radius: 17px;
+    padding: 20px;
+    box-shadow: 0 7px 18px #0005;
+    transition: transform .2s, border-color .2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: var(--celeste);
+}
+
+.icono {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #087cf0, #7544b9);
+    margin-bottom: 14px;
+}
+
+.tarjeta h3 {
+    color: var(--celeste);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.objetivo {
+    margin-top: 13px;
+    padding: 11px;
+    background: #087cf022;
+    border-radius: 10px;
+    color: #bdeaff;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.formacion {
+    background: #112b4d;
+    border: 1px solid #24517c;
+    padding: 20px;
+    border-radius: 17px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.formacion h3 {
+    color: var(--celeste);
+    margin-bottom: 15px;
+}
+
+.cancha {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #10c9e8;
+    border-radius: 12px;
+    background: #126b58;
+}
+
+.jugador {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    margin: 9px;
+    border-radius: 50%;
+    background: #087cf0;
+    border: 2px solid white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.arquero {
+    background: #a36bff;
+}
+
+.pivot {
+    background: #087cf0;
+}
+
+.nota {
+    color: var(--texto);
+    font-size: 13px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.consejo {
+    margin-top: 25px;
+    padding: 18px;
+    background: linear-gradient(135deg, #142e55, #30245d);
+    border: 1px solid #7657c2;
+    border-radius: 15px;
+    line-height: 1.6;
+}
+
+.consejo h3 {
+    color: var(--morado);
+    margin-bottom: 8px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 30px 0 15px;
+}
+
+button {
+    border: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #087cf0, #3657b8);
+}
+
+button.volver {
+    background: linear-gradient(135deg, #7544b9, #a36bff);
+}
+
+button:hover {
+    opacity: .88;
+}
+
+footer {
+    text-align: center;
+    color: #8daac9;
+    font-size: 12px;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <header class="encabezado">
+        <div class="logo">FUTSAL<span>GOT</span></div>
+        <h1>Estrategias y sistema de juego</h1>
+        <p>Sub-9 · Posición: Arquero</p>
+    </header>
+
+    <h2 class="subtitulo">Aprende y mejora tu juego</h2>
+
+    <div class="introduccion">
+        En esta sección aprenderás estrategias básicas para el arquero
+        de futsal. Conocerás cómo ubicarse en la portería, comunicarse
+        con sus compañeros y colaborar en las jugadas del equipo.
+    </div>
+
+    <div class="tarjetas">
+
+        <article class="tarjeta">
+            <div class="icono">🥅</div>
+            <h3>1. Posicionamiento del arquero</h3>
+            <p>El arquero debe ubicarse de manera que pueda cubrir la portería.
+            Tiene que observar el balón y mantenerse atento a los movimientos
+            de los jugadores.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> mejorar la ubicación y la atención durante el juego.
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">📢</div>
+            <h3>2. Comunicación con el equipo</h3>
+            <p>Debe comunicarse con sus compañeros mediante palabras sencillas,
+            avisando cuando un rival se acerca o cuando necesita apoyo.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> aprender a organizarse y colaborar en equipo.
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">⚽</div>
+            <h3>3. Inicio del juego</h3>
+            <p>Cuando recupera el balón, puede comenzar una jugada con un pase
+            corto hacia un compañero que esté libre y bien ubicado.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> iniciar el ataque con pases seguros.
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">🛡️</div>
+            <h3>4. Apoyo a la defensa</h3>
+            <p>El arquero debe observar cómo se encuentran sus compañeros
+            y estar preparado para colaborar cuando el equipo pierde el balón.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> mantener el orden y apoyar al equipo.
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">👀</div>
+            <h3>5. Atención ante un ataque</h3>
+            <p>Cuando un rival se acerca, debe observar el balón, mantener
+            una postura equilibrada y estar preparado para reaccionar.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> desarrollar la concentración y la reacción.
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <div class="icono">🤝</div>
+            <h3>6. Trabajo en equipo</h3>
+            <p>El arquero también participa en la organización del equipo.
+            Debe colaborar con sus compañeros y mantener una buena comunicación.</p>
+            <div class="objetivo">
+                <b>Objetivo:</b> fortalecer la coordinación y el compañerismo.
+            </div>
+        </article>
+
+    </div>
+
+    <h2 class="subtitulo">Sistema de juego básico: 1-2-1</h2>
+
+    <div class="formacion">
+        <h3>Distribución de los jugadores</h3>
+
+        <div class="cancha">
+            <div>
+                <span class="jugador pivot">PÍVOT</span>
+            </div>
+            <div>
+                <span class="jugador">ALA</span>
+                <span class="jugador">CIERRE</span>
+            </div>
+            <div>
+                <span class="jugador arquero">ARQUERO</span>
+            </div>
+        </div>
+
+        <p class="nota">
+            En este sistema, el arquero protege la portería, los jugadores
+            de campo se distribuyen para apoyar la defensa y el ataque,
+            y el pívot se ubica más adelante.
+        </p>
+    </div>
+
+    <div class="consejo">
+        <h3>⭐ Recomendación</h3>
+        Practica estas estrategias mediante actividades sencillas,
+        con la orientación del entrenador. Recuerda que el arquero
+        forma parte del equipo y su comunicación es muy importante.
+    </div>
+
+    <div class="botones">
+    <button class="volver"
+        onclick="window.location.href='menu perfil.html'">
+        ← Volver al menú
+    </button>
+
+    <button
+        onclick="window.location.href='perfil.html'">
+        Cambiar perfil
+    </button>
+</div>
+
+    <footer>
+        FutsalGot · Aprende, practica y mejora tu futsal
+    </footer>
+
+</div>
+
+</body>
+</html>

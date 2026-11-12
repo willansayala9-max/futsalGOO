@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historia del Futsal | FutsalGot</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --azul: #087cf0;
+    --celeste: #10c9e8;
+    --morado: #8055ff;
+    --fondo: #06132d;
+    --panel: #0a2045;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+
+    background-image:
+        linear-gradient(
+            rgba(3, 15, 42, 0.88),
+            rgba(3, 15, 42, 0.88)
+        ),
+        url("./fondo historico.jpg");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+/* BARRA SUPERIOR */
+
+.barra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 5%;
+    background: rgba(2, 13, 37, .95);
+    border-bottom: 2px solid #087cf0;
+    flex-wrap: wrap;
+}
+
+.marca {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.marca span {
+    color: var(--celeste);
+}
+
+.menu {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: #d8e6ff;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.menu a:hover,
+.menu a.activo {
+    color: var(--celeste);
+    background: #10346b;
+}
+
+/* PORTADA */
+
+.portada {
+    min-height: 350px;
+    padding: 45px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 15, 42, 0.65),
+            rgba(3, 19, 49, 0.25)
+        ),
+        url("./fondo historico.jpg");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom: 1px solid var(--azul);
+}
+.portada-texto {
+    max-width: 550px;
+}
+
+.pequeno-titulo {
+    color: var(--celeste);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.portada h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    margin: 14px 0;
+}
+
+.portada h1 span {
+    display: block;
+    color: var(--celeste);
+}
+
+.portada p {
+    color: #d1e0f9;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.balon {
+    font-size: clamp(90px, 15vw, 160px);
+    filter: drop-shadow(0 0 22px rgba(16, 201, 232, .4));
+    padding: 10px;
+}
+
+/* CONTENIDO GENERAL */
+
+main {
+    width: min(1150px, 92%);
+    margin: 30px auto;
+}
+
+.seccion-titulo {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.seccion-titulo span {
+    color: var(--celeste);
+}
+
+.panel {
+    background: linear-gradient(135deg, rgba(12, 37, 78, .96), rgba(5, 22, 53, .98));
+    border: 1px solid #087cf0;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .17);
+}
+
+/* CREADOR */
+
+.creador {
+    display: grid;
+    grid-template-columns: minmax(180px, 270px) 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.creador-imagen {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 15px;
+    border: 2px solid var(--celeste);
+    background: #142c50;
+}
+
+.etiqueta {
+    color: var(--celeste);
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.creador h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.creador p,
+.historia-texto p {
+    color: #d3e0f6;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.frase {
+    margin-top: 18px;
+    padding: 16px;
+    border-left: 4px solid var(--morado);
+    background: rgba(128, 85, 255, .12);
+    border-radius: 0 12px 12px 0;
+    color: #e4d9ff;
+    line-height: 1.7;
+}
+
+/* DATOS */
+
+.datos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.dato {
+    padding: 20px;
+    background: #0b2450;
+    border: 1px solid #174c8e;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.dato .icono {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.dato h3 {
+    color: var(--celeste);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.dato p {
+    color: #e6efff;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ORIGEN */
+
+.historia-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.historia-texto h3 {
+    font-size: 23px;
+    color: var(--celeste);
+    margin-bottom: 15px;
+}
+
+.historia-texto p + p {
+    margin-top: 12px;
+}
+
+.historia-imagen {
+    width: 100%;
+    min-height: 240px;
+    max-height: 330px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 1px solid #168bff;
+    background: #10264b;
+}
+
+/* LÍNEA DEL TIEMPO */
+
+.linea-tiempo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.evento {
+    position: relative;
+    padding: 18px;
+    border-radius: 14px;
+    background: #0b2450;
+    border: 1px solid #174c8e;
+}
+
+.fecha {
+    display: inline-block;
+    background: linear-gradient(90deg, #087cf0, #6a43f5);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.evento h3 {
+    color: var(--celeste);
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.evento p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #d2dff5;
+}
+
+/* IMPORTANCIA */
+
+.importancia {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.importancia article {
+    background: #0b2450;
+    border-radius: 14px;
+    border: 1px solid #174c8e;
+    padding: 20px;
+}
+
+.importancia .icono {
+    font-size: 28px;
+}
+
+.importancia h3 {
+    color: var(--celeste);
+    margin: 10px 0;
+    font-size: 17px;
+}
+
+.importancia p {
+    color: #d2dff5;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* BOTONES Y PIE */
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.boton {
+    border: 1px solid var(--celeste);
+    border-radius: 30px;
+    padding: 13px 23px;
+    color: var(--celeste);
+    background: #071b3c;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.boton:hover {
+    background: var(--celeste);
+    color: #06132d;
+}
+
+.boton.morado {
+    background: linear-gradient(90deg, #5834df, #8055ff);
+    border-color: #9d85ff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: #030b1c;
+    border-top: 1px solid #164780;
+    color: #b9cbe7;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+footer strong {
+    color: var(--celeste);
+    font-size: 20px;
+}
+
+/* PANTALLAS PEQUEÑAS */
+
+@media (max-width: 800px) {
+    .creador,
+    .historia-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .creador-imagen {
+        max-width: 280px;
+        height: 280px;
+        margin: auto;
+    }
+
+    .linea-tiempo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portada {
+        padding: 35px 5%;
+    }
+
+    .balon {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        font-size: 14px;
+    }
+
+    .barra {
+        justify-content: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu a {
+        padding: 8px;
+    }
+
+    .portada {
+        min-height: 250px;
+    }
+
+    .datos,
+    .linea-tiempo,
+    .importancia {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .seccion-titulo {
+        font-size: 22px;
+    }
+
+    .botones {
+        justify-content: center;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="barra">
+    <div class="marca">⚽ Futsal<span>Got</span></div>
+
+    <nav class="menu">
+        <a href="menu perfil.html">Inicio</a>
+        <a href="tecnicas.html">Técnicas</a>
+        <a href="estrategias.html">Estrategias</a>
+        <a href="ejercicios.html">Ejercicios</a>
+        <a href="jugadas.html">Jugadas</a>
+        <a class="activo" href="historia.html">Historia</a>
+    </nav>
+</header>
+
+<section class="portada">
+    <div class="portada-texto">
+        <div class="pequeno-titulo">Conoce sus orígenes</div>
+        <h1>Historia del <span>Futsal</span></h1>
+        <p>
+            Un deporte que nació en Sudamérica, creció en todo el mundo
+            y hoy une a millones de personas mediante el fútbol sala.
+        </p>
+    </div>
+
+    <div class="balon">⚽</div>
+</section>
+
+<main>
+
+    <!-- PRESENTACIÓN DEL CREADOR -->
+
+    <h2 class="seccion-titulo">El origen de <span>nuestro deporte</span></h2>
+
+    <section class="panel creador">
+        <img
+            class="creador-imagen"
+            src="creador.jpg"
+            alt="Fotografía de Juan Carlos Ceriani"
+            onerror="this.onerror=null;this.src='https://placehold.co/500x650/10264b/10c9e8?text=Juan+Carlos+Ceriani';"
+        >
+
+        <div>
+            <div class="etiqueta">El creador del futsal</div>
+            <h2>Juan Carlos Ceriani</h2>
+
+            <p>
+                Juan Carlos Ceriani fue un profesor argentino de educación
+                física que creó el fútbol de salón en 1930, en Montevideo,
+                Uruguay, mientras trabajaba en la Asociación Cristiana
+                de Jóvenes.
+            </p>
+
+            <p style="margin-top:12px;">
+                Buscaba una forma de jugar al fútbol en espacios cubiertos,
+                como gimnasios, utilizando equipos pequeños y adaptando
+                las reglas a una cancha más reducida.
+            </p>
+
+            <div class="frase">
+                <strong>¿Qué buscaba?</strong><br>
+                Crear una modalidad de fútbol que pudiera practicarse
+                en espacios cerrados y que fomentara la técnica,
+                la coordinación y el trabajo en equipo.
+            </div>
+        </div>
+    </section>
+
+    <!-- DATOS IMPORTANTES -->
+
+    <section class="datos">
+        <article class="dato">
+            <div class="icono">📅</div>
+            <h3>AÑO DE CREACIÓN</h3>
+            <p>1930</p>
+        </article>
+
+        <article class="dato">
+            <div class="icono">📍</div>
+            <h3>LUGAR DE ORIGEN</h3>
+            <p>Montevideo, Uruguay</p>
+        </article>
+
+        <article class="dato">
+            <div class="icono">⚽</div>
+            <h3>IDEA PRINCIPAL</h3>
+            <p>Jugar al fútbol en espacios reducidos</p>
+        </article>
+    </section>
+
+    <!-- CÓMO FUE CREADO -->
+
+    <h2 class="seccion-titulo">¿Cómo fue <span>creado?</span></h2>
+
+    <section class="panel historia-grid">
+        <div class="historia-texto">
+            <h3>De los gimnasios a todo el mundo</h3>
+
+            <p>
+                En 1930, Juan Carlos Ceriani desarrolló el fútbol de salón
+                en Uruguay. Adaptó elementos de distintos deportes para
+                organizar un juego que pudiera practicarse dentro de un
+                gimnasio.
+            </p>
+
+            <p>
+                El espacio era más pequeño que una cancha de fútbol y
+                los equipos tenían menos jugadores. Esto hizo que los
+                pases rápidos, el control del balón y la coordinación
+                fueran muy importantes.
+            </p>
+
+            <p>
+                Con el tiempo, el deporte se extendió a otros países
+                de Sudamérica y luego llegó a diferentes partes del mundo.
+                Surgieron organizaciones y competiciones que ayudaron
+                a impulsar su crecimiento.
+            </p>
+
+            <p>
+                Actualmente, el futsal se practica en escuelas, clubes
+                y competiciones internacionales.
+            </p>
+        </div>
+
+        <img
+            class="historia-imagen"
+            src="origen.jpg"
+            alt="Imagen histórica del fútbol de salón"
+            onerror="this.onerror=null;this.src='https://placehold.co/700x450/10264b/10c9e8?text=Origen+del+futsal';"
+        >
+    </section>
+
+    <!-- LÍNEA DEL TIEMPO -->
+
+    <h2 class="seccion-titulo">Un recorrido por <span>su historia</span></h2>
+
+    <section class="panel">
+        <div class="linea-tiempo">
+
+            <article class="evento">
+                <div class="fecha">1930</div>
+                <h3>Nace el fútbol de salón</h3>
+                <p>
+                    Juan Carlos Ceriani desarrolla esta modalidad
+                    en Montevideo, Uruguay.
+                </p>
+            </article>
+
+            <article class="evento">
+                <div class="fecha">Décadas siguientes</div>
+                <h3>Se expande por Sudamérica</h3>
+                <p>
+                    El deporte gana popularidad y comienza a practicarse
+                    en más países y organizaciones.
+                </p>
+            </article>
+
+            <article class="evento">
+                <div class="fecha">1989</div>
+                <h3>Primer Mundial de FIFA</h3>
+                <p>
+                    Se celebra en los Países Bajos la primera Copa Mundial
+                    de Futsal organizada por la FIFA.
+                </p>
+            </article>
+
+            <article class="evento">
+                <div class="fecha">Actualidad</div>
+                <h3>Un deporte internacional</h3>
+                <p>
+                    El futsal continúa creciendo y se practica
+                    en numerosos países.
+                </p>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- IMPORTANCIA -->
+
+    <h2 class="seccion-titulo">¿Por qué es importante <span>el futsal?</span></h2>
+
+    <section class="panel importancia">
+
+        <article>
+            <div class="icono">🤝</div>
+            <h3>Trabajo en equipo</h3>
+            <p>
+                Enseña a colaborar, comunicarse y apoyar a los compañeros
+                durante el partido.
+            </p>
+        </article>
+
+        <article>
+            <div class="icono">⚡</div>
+            <h3>Rapidez y destreza</h3>
+            <p>
+                Ayuda a desarrollar el control del balón, la coordinación
+                y la toma rápida de decisiones.
+            </p>
+        </article>
+
+        <article>
+            <div class="icono">💙</div>
+            <h3>Pasión por el deporte</h3>
+            <p>
+                Fomenta la actividad física, la disciplina, el respeto
+                y la convivencia.
+            </p>
+        </article>
+
+    </section>
+
+    <!-- NAVEGACIÓN -->
+
+    <div class="botones">
+        <button class="boton" onclick="volverMenu()">
+            ← Volver al menú
+        </button>
+
+        <button class="boton morado" onclick="volverPerfil()">
+            Volver al perfil
+        </button>
+    </div>
+
+</main>
+
+<footer>
+    <strong>FutsalGot</strong>
+    <p>Más que un juego, una comunidad.</p>
+    <p>Historia, técnicas y estrategias de futsal.</p>
+</footer>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+const categoria = parametros.get("categoria") || "";
+const posicion = parametros.get("posicion") || "";
+
+function volverMenu() {
+    let destino = "menu perfil.html";
+
+    if (categoria || posicion) {
+        destino += "?categoria=" + encodeURIComponent(categoria) +
+                   "&posicion=" + encodeURIComponent(posicion);
+    }
+
+    window.location.href = destino;
+}
+
+function volverPerfil() {
+    window.location.href = "perfil.html";
+}
+</script>
+
+</body>
+</html>

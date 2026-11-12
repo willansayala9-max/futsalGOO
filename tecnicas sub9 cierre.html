@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FutsalGO | SUB-9 Cierre</title>
+
+<style>
+:root {
+  --azul: #087cf0;
+  --celeste: #10c9e8;
+  --morado: #a36bff;
+  --fondo: #07152b;
+  --tarjeta: #102644;
+  --texto: #f2f7ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(145deg, #07152b, #102e54);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 28px 16px;
+  background: linear-gradient(120deg, #0756b5, #14264e);
+  border-bottom: 3px solid var(--celeste);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--celeste);
+}
+
+header h1 {
+  margin-bottom: 8px;
+  font-size: 25px;
+}
+
+header p {
+  margin: 6px 0;
+  color: #d7eaff;
+}
+
+.etiqueta {
+  display: inline-block;
+  background: #a36bff;
+  color: white;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.contenedor {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px 14px 35px;
+}
+
+.introduccion {
+  background: #102644;
+  padding: 18px;
+  border-radius: 15px;
+  border-left: 4px solid var(--celeste);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+h2 {
+  color: var(--celeste);
+  font-size: 22px;
+  margin-top: 28px;
+}
+
+.tecnica {
+  background: var(--tarjeta);
+  border: 1px solid #25466e;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 18px 0;
+  box-shadow: 0 5px 15px #0003;
+}
+
+.tecnica img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  background: #19385b;
+}
+
+.contenido {
+  padding: 18px;
+}
+
+.contenido h3 {
+  color: white;
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.contenido p,
+.contenido li {
+  line-height: 1.7;
+  color: #e0ecff;
+}
+
+.pasos {
+  padding-left: 22px;
+}
+
+.consejo {
+  background: #19395d;
+  padding: 12px;
+  border-radius: 10px;
+  border-left: 3px solid var(--morado);
+  line-height: 1.6;
+}
+
+.video {
+  background: var(--tarjeta);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 25px;
+  border: 1px solid #25466e;
+  line-height: 1.7;
+}
+
+.boton {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--azul), #0756b5);
+  color: white;
+  padding: 13px 18px;
+  margin: 8px 5px 0 0;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton-secundario {
+  background: #263d5c;
+}
+
+.botones {
+  text-align: center;
+  margin-top: 28px;
+}
+
+footer {
+  text-align: center;
+  padding: 22px;
+  color: #b9d2f4;
+  border-top: 1px solid #25466e;
+}
+
+@media (min-width: 700px) {
+  .tecnica {
+    display: grid;
+    grid-template-columns: 38% 62%;
+  }
+
+  .tecnica img {
+    height: 100%;
+    min-height: 260px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Futsal<span>Got</span></div>
+  <h1>Técnicas de Futsal</h1>
+  <p>Aprende, practica y mejora tus habilidades</p>
+  <div class="etiqueta">Categoría SUB-9 | Posición: Cierre</div>
+</header>
+
+<main class="contenedor">
+
+  <section class="introduccion">
+    <h2>¡Bienvenido, jugador!</h2>
+    El cierre juega principalmente en la zona defensiva. Su función es
+    ayudar a proteger la portería, recuperar el balón y comenzar los
+    ataques con pases seguros. En SUB-9 aprenderás estas técnicas poco
+    a poco, con ejercicios sencillos y supervisión de tu entrenador.
+  </section>
+
+  <h2>⚽ 1. Posición defensiva</h2>
+
+  <article class="tecnica">
+    <img
+      src="nopasar.jpg"
+      alt="Campo de fútsal para practicar la posición defensiva"
+      loading="lazy">
+    <div class="contenido">
+      <h3>¿Qué es?</h3>
+      <p>
+        Es la postura que permite al cierre reaccionar rápidamente
+        cuando el equipo contrario tiene el balón.
+      </p>
+      <strong>Pasos para practicar:</strong>
+      <ol class="pasos">
+        <li>Coloca los pies separados aproximadamente al ancho de los hombros.</li>
+        <li>Flexiona ligeramente las rodillas.</li>
+        <li>Mantén la mirada en el balón y en el jugador contrario.</li>
+        <li>Muévete con pasos cortos sin perder el equilibrio.</li>
+      </ol>
+      <p class="consejo">
+        Consejo: no te quedes completamente erguido. Mantente preparado
+        para moverte hacia ambos lados.
+      </p>
+    </div>
+  </article>
+
+  <h2>⚽ 2. Pase corto y preciso</h2>
+
+  <article class="tecnica">
+    <img
+      src="pase.jpg"
+      alt="Jugadores practicando pases con el balón"
+      loading="lazy">
+    <div class="contenido">
+      <h3>¿Para qué sirve?</h3>
+      <p>
+        El pase permite entregar el balón a un compañero y comenzar
+        una jugada sin perder la posesión.
+      </p>
+      <strong>Pasos para practicar:</strong>
+      <ol class="pasos">
+        <li>Coloca el pie de apoyo al lado del balón.</li>
+        <li>Golpea suavemente con la parte interna del pie.</li>
+        <li>Dirige el balón hacia el compañero.</li>
+        <li>Después del pase, muévete para ofrecer otra opción.</li>
+      </ol>
+      <p class="consejo">
+        Consejo: comienza a corta distancia y aumenta poco a poco
+        cuando tengas mayor control.
+      </p>
+    </div>
+  </article>
+
+  <h2>⚽ 3. Control del balón</h2>
+
+  <article class="tecnica">
+    <img
+      src="recepcion.jpg"
+      alt="Balón en el campo de juego"
+      loading="lazy">
+    <div class="contenido">
+      <h3>¿Qué es?</h3>
+      <p>
+        Es recibir el balón y dejarlo cerca de los pies para poder
+        decidir qué hacer después.
+      </p>
+      <strong>Pasos para practicar:</strong>
+      <ol class="pasos">
+        <li>Pide a un compañero que te pase el balón despacio.</li>
+        <li>Recíbelo con la planta o la parte interna del pie.</li>
+        <li>Amortigua el balón para que no se aleje demasiado.</li>
+        <li>Levanta la mirada y busca a un compañero libre.</li>
+      </ol>
+      <p class="consejo">
+        Consejo: practica primero sin oposición y después con un
+        compañero que se mueva.
+      </p>
+    </div>
+  </article>
+
+  <h2>⚽ 4. Interceptación del pase</h2>
+
+  <article class="tecnica">
+    <img
+      src="interseccion del balon.jpg"
+      alt="Jugadores en una cancha deportiva"
+      loading="lazy">
+    <div class="contenido">
+      <h3>¿En qué consiste?</h3>
+      <p>
+        Consiste en anticipar un pase del equipo contrario y recuperar
+        el balón sin cometer faltas.
+      </p>
+      <strong>Pasos para practicar:</strong>
+      <ol class="pasos">
+        <li>Observa al jugador que tiene el balón.</li>
+        <li>Intenta reconocer hacia dónde quiere pasar.</li>
+        <li>Muévete para cerrar la línea de pase.</li>
+        <li>Si el balón queda a tu alcance, recupéralo de forma controlada.</li>
+        <li>Después, busca un pase seguro para un compañero.</li>
+      </ol>
+      <p class="consejo">
+        Consejo: no te lances ni empujes al contrario. Aprende a
+        anticiparte con equilibrio y respetando las reglas.
+      </p>
+    </div>
+  </article>
+
+  <h2>⚽ 5. Conducción del balón</h2>
+
+  <article class="tecnica">
+    <img
+      src="conduccion del balon.jpg"
+      alt="Balón durante una práctica deportiva"
+      loading="lazy">
+    <div class="contenido">
+      <h3>¿Para qué sirve?</h3>
+      <p>
+        Permite avanzar con el balón sin perder el control y buscar
+        una mejor posición para pasar.
+      </p>
+      <strong>Pasos para practicar:</strong>
+      <ol class="pasos">
+        <li>Empuja suavemente el balón con el pie.</li>
+        <li>Da varios toques cortos mientras avanzas.</li>
+        <li>Alterna el uso de ambos pies cuando puedas.</li>
+        <li>Levanta la mirada para observar el espacio disponible.</li>
+        <li>Al terminar, realiza un pase a un compañero.</li>
+      </ol>
+      <p class="consejo">
+        Consejo: primero practica caminando; luego aumenta la velocidad
+        cuando controles bien el balón.
+      </p>
+    </div>
+  </article>
+
+  <section class="video">
+    <h2>🎥 Video para aprender</h2>
+    <p>
+      Mira ejemplos visuales de ejercicios defensivos, pases y
+      posicionamiento para jugadores de futsal.
+    </p>
+
+    <a class="boton"
+       href="https://www.youtube.com/results?search_query=ejercicios+de+futsal+para+ni%C3%B1os+defensa+cierre"
+       target="_blank"
+       rel="noopener noreferrer">
+       Ver videos de técnicas de futsal
+    </a>
+
+    <p>
+      Mientras miras el video, presta atención a la postura defensiva,
+      los pases cortos y la manera de recuperar el balón.
+    </p>
+  </section>
+
+  <section class="video">
+    <h2>🏃 Práctica final</h2>
+    <p>Realiza estos ejercicios con tu entrenador o un compañero:</p>
+    <ol class="pasos">
+      <li>Mantén la posición defensiva durante unos segundos.</li>
+      <li>Realiza cinco pases cortos con un compañero.</li>
+      <li>Recibe el balón y contrólalo antes de pasarlo.</li>
+      <li>Practica la interceptación caminando y sin contacto físico.</li>
+      <li>Conduce el balón y termina con un pase preciso.</li>
+    </ol>
+    <p class="consejo">
+      Recuerda: lo importante es aprender la técnica, jugar en equipo
+      y practicar de forma segura.
+    </p>
+  </section>
+
+  <div class="botones">
+    <button class="boton" onclick="volverMenu()">
+      Volver al menú
+    </button>
+    <button class="boton boton-secundario" onclick="volverPerfil()">
+      Cambiar perfil
+    </button>
+  </div>
+
+</main>
+
+<footer>
+  FutsalGot · Aprende, practica y mejora
+</footer>
+
+<script>
+function volverMenu() {
+  window.location.href =
+    "menu%20perfil.html?categoria=SUB-9&posicion=7";
+}
+
+function volverPerfil() {
+  window.location.href = "perfil.html";
+}
+</script>
+
+</body>
+</html>

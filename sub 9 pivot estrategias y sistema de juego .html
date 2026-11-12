@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sub-9 Pívot | FutsalGot</title>
+
+<style>
+:root {
+    --azul: #087cf0;
+    --celeste: #10c9e8;
+    --morado: #a36bff;
+    --blanco: #f5f9ff;
+    --texto: #d3e4f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top right, #173c70 0, transparent 35%),
+        linear-gradient(145deg, #06101f, #0a2447, #06101f);
+    color: var(--blanco);
+    min-height: 100vh;
+    padding: 18px;
+}
+
+.contenedor {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.encabezado {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 20px;
+    border-radius: 22px;
+    text-align: center;
+    background: linear-gradient(120deg, #087cf0, #263d86, #7544b9);
+    box-shadow: 0 12px 35px #0006;
+}
+
+.encabezado::before {
+    content: "⚽";
+    position: absolute;
+    font-size: 115px;
+    opacity: .10;
+    right: 15px;
+    top: 5px;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.logo span {
+    color: #10e5ff;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 30px;
+    background: #ffffff22;
+    border: 1px solid #ffffff55;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.encabezado h1 {
+    font-size: clamp(23px, 5vw, 32px);
+    margin-bottom: 9px;
+}
+
+.encabezado p {
+    color: #e1efff;
+    font-size: 14px;
+}
+
+.introduccion {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 16px;
+    background: #112b4d;
+    border: 1px solid #24517c;
+    border-left: 4px solid var(--celeste);
+    color: var(--texto);
+    line-height: 1.7;
+}
+
+.titulo-seccion {
+    color: var(--celeste);
+    font-size: 21px;
+    margin: 27px 0 16px;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 17px;
+}
+
+.tarjeta {
+    position: relative;
+    overflow: hidden;
+    padding: 21px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #142f53, #091a32);
+    border: 1px solid #28517c;
+    box-shadow: 0 8px 22px #0004;
+    transition: .25s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: var(--celeste);
+    box-shadow: 0 12px 25px #087cf033;
+}
+
+.numero {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    color: #ffffff20;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.icono {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 27px;
+    background: linear-gradient(135deg, #087cf0, #7544b9);
+    margin-bottom: 15px;
+}
+
+.tarjeta h3 {
+    color: var(--celeste);
+    font-size: 17px;
+    margin-bottom: 11px;
+}
+
+.tarjeta p {
+    color: var(--texto);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.objetivo {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 11px;
+    background: #087cf020;
+    border: 1px solid #087cf044;
+    color: #c4eaff;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.sistema {
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #112b4d, #0a1a32);
+    border: 1px solid #28517c;
+    text-align: center;
+}
+
+.sistema h3 {
+    color: var(--celeste);
+    margin-bottom: 12px;
+}
+
+.cancha {
+    max-width: 420px;
+    margin: 18px auto;
+    padding: 20px 10px;
+    border: 3px solid #8ceeff;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #126b58, #0d594b);
+    box-shadow: inset 0 0 25px #0004;
+}
+
+.fila {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.jugador {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    border: 2px solid white;
+    background: #087cf0;
+}
+
+.pivot {
+    background: #a36bff;
+}
+
+.nota {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+.consejo {
+    margin-top: 23px;
+    padding: 20px;
+    border-radius: 17px;
+    background: linear-gradient(120deg, #172e56, #34245e);
+    border: 1px solid #7657c2;
+    line-height: 1.7;
+    color: var(--texto);
+}
+
+.consejo h3 {
+    color: #c09aff;
+    margin-bottom: 9px;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 28px 0;
+}
+
+button {
+    padding: 13px 23px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #087cf0, #3657b8);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.volver {
+    background: linear-gradient(135deg, #7544b9, #a36bff);
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+footer {
+    text-align: center;
+    color: #8daac9;
+    font-size: 12px;
+    padding: 15px;
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 12px;
+    }
+
+    .encabezado {
+        padding: 25px 14px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="contenedor">
+
+<header class="encabezado">
+    <div class="logo">FUTSAL<span>GOT</span></div>
+    <div class="etiqueta">CATEGORÍA SUB-9</div>
+    <h1>Estrategias y sistema de juego</h1>
+    <p>Posición: Pívot</p>
+</header>
+
+<div class="introduccion">
+    El pívot es un jugador que se ubica principalmente en la zona de ataque.
+    Su función es recibir pases, proteger el balón, colaborar con sus
+    compañeros y buscar oportunidades para acercarse a la portería rival.
+</div>
+
+<h2 class="titulo-seccion">⚡ Estrategias para el jugador pívot</h2>
+
+<div class="tarjetas">
+
+    <article class="tarjeta">
+        <span class="numero">01</span>
+        <div class="icono">🎯</div>
+        <h3>1. Ubicación en el ataque</h3>
+        <p>El pívot debe ubicarse en una zona adelantada de la cancha,
+        buscando espacios para recibir el balón y participar en las jugadas.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> aprender a ubicarse y ofrecer opciones de pase.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">02</span>
+        <div class="icono">⚽</div>
+        <h3>2. Recepción del balón</h3>
+        <p>Debe estar atento al pase de sus compañeros y controlar el balón
+        con cuidado para poder continuar la jugada.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> mejorar el control y la recepción del balón.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">03</span>
+        <div class="icono">🛡️</div>
+        <h3>3. Protección del balón</h3>
+        <p>Puede utilizar su cuerpo para proteger el balón de los rivales,
+        manteniendo el control y buscando un pase seguro.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> aprender a conservar el balón con seguridad.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">04</span>
+        <div class="icono">🤝</div>
+        <h3>4. Juego de apoyo</h3>
+        <p>El pívot debe colaborar con los alas y otros compañeros,
+        realizando pases y movimientos para mantener la jugada.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> fortalecer la coordinación y el juego colectivo.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">05</span>
+        <div class="icono">🏃</div>
+        <h3>5. Desmarque</h3>
+        <p>Debe moverse hacia espacios libres para alejarse de la marca
+        de los rivales y facilitar que sus compañeros puedan pasarle el balón.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> mejorar los movimientos y la búsqueda de espacios.
+        </div>
+    </article>
+
+    <article class="tarjeta">
+        <span class="numero">06</span>
+        <div class="icono">🥅</div>
+        <h3>6. Finalización de jugadas</h3>
+        <p>Cuando recibe el balón cerca de la portería, puede buscar una
+        oportunidad de remate, siempre observando la posición del arquero.</p>
+        <div class="objetivo">
+            <b>Objetivo:</b> desarrollar la precisión y la toma de decisiones.
+        </div>
+    </article>
+
+</div>
+
+<h2 class="titulo-seccion">⚽ Sistema de juego básico: 1-2-1</h2>
+
+<div class="sistema">
+    <h3>Distribución de los jugadores</h3>
+
+    <div class="cancha">
+        <div class="fila">
+            <div class="jugador pivot">PÍVOT</div>
+        </div>
+
+        <div class="fila">
+            <div class="jugador">ALA</div>
+            <div class="jugador">CIERRE</div>
+        </div>
+
+        <div class="fila">
+            <div class="jugador">ARQUERO</div>
+        </div>
+    </div>
+
+    <p class="nota">
+        En el sistema 1-2-1, el pívot se ubica en la parte adelantada.
+        Su función es recibir el balón, apoyar a sus compañeros y participar
+        en las oportunidades de ataque.
+    </p>
+</div>
+
+<div class="consejo">
+    <h3>⭐ Recomendación</h3>
+    Practica la recepción, la protección del balón y los movimientos
+    para encontrar espacios. Recuerda que el pívot debe colaborar
+    con sus compañeros y tomar decisiones con tranquilidad.
+</div>
+
+<div class="botones">
+    <button class="volver" onclick="history.back()">← Volver</button>
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        ↑ Ir al inicio
+    </button>
+</div>
+
+<footer>
+    FutsalGot · Aprende, practica y mejora tu futsal
+</footer>
+
+</div>
+</body>
+</html>

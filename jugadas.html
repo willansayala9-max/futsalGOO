@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jugadas de Futsal | FutsalGot</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #06152f, #063b70, #17134b);
+}
+
+main { max-width: 1000px; margin: auto; }
+
+h1 {
+  color: #10c9e8;
+  text-align: center;
+  font-size: 32px;
+}
+
+.intro {
+  text-align: center;
+  color: #d6eaff;
+  line-height: 1.6;
+}
+
+.perfil {
+  padding: 18px;
+  margin: 22px 0;
+  background: #10294a;
+  border: 1px solid #10c9e8;
+  border-radius: 15px;
+  line-height: 1.8;
+}
+
+.perfil strong { color: #10c9e8; }
+
+#jugadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 18px;
+}
+
+.tarjeta {
+  padding: 15px;
+  background: #10294a;
+  border: 1px solid #10c9e8;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px #0005;
+}
+
+.tarjeta h2 {
+  color: #10c9e8;
+  font-size: 20px;
+}
+
+.tarjeta p { line-height: 1.5; }
+
+.tarjeta img,
+.tarjeta video {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  border-radius: 10px;
+  background: #06152f;
+}
+
+.tarjeta img {
+  height: 190px;
+  object-fit: cover;
+}
+
+.tarjeta video { max-height: 240px; }
+
+.objetivo {
+  padding: 12px;
+  background: #17265b;
+  border-left: 4px solid #a36bff;
+  border-radius: 8px;
+}
+
+.consejos {
+  margin-top: 22px;
+  padding: 18px;
+  background: #171747;
+  border: 1px solid #a36bff;
+  border-radius: 14px;
+  line-height: 1.8;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #087cf0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cambiar { background: #8146e8; }
+
+.nota { color: #d6eaff; font-size: 14px; }
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+  color: #a9d9ff;
+}
+
+@media (max-width: 400px) {
+  body { padding: 12px; }
+  h1 { font-size: 26px; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <h1>⚽ FutsalGot</h1>
+  <p class="intro">
+    Jugadas de futsal: aprende a moverte, pasar y trabajar en equipo.
+  </p>
+
+  <div class="perfil">
+    <strong>Tu perfil seleccionado</strong><br>
+    Categoría: <span id="categoria"></span><br>
+    Posición: <span id="posicion"></span>
+    <p id="mensaje"></p>
+  </div>
+
+  <h2>Jugadas de futsal</h2>
+  <p class="nota">
+    Practica primero despacio y aumenta la dificultad cuando el equipo
+    domine los movimientos.
+  </p>
+
+  <div id="jugadas"></div>
+
+  <section class="consejos">
+    <h2>💡 Consejos para aprender las jugadas</h2>
+    <ul>
+      <li>Comunícate con tus compañeros.</li>
+      <li>Practica los movimientos sin oposición al principio.</li>
+      <li>Respeta las posiciones y los espacios de la cancha.</li>
+      <li>Recuerda que una jugada depende del trabajo de todo el equipo.</li>
+    </ul>
+  </section>
+
+  <button onclick="volverMenu()">← Volver al menú</button>
+  <button class="cambiar" onclick="cambiarPerfil()">Cambiar perfil</button>
+
+  <footer>FutsalGot · Técnica · Estrategia · Equipo · Pasión</footer>
+</main>
+
+<script>
+const parametros = new URLSearchParams(window.location.search);
+const categoria = parametros.get("categoria") || "SUB-12";
+const posicion = parametros.get("posicion") || "Cierre";
+
+document.getElementById("categoria").textContent = categoria;
+document.getElementById("posicion").textContent = posicion;
+
+const esArquero = posicion.toLowerCase() === "arquero";
+
+document.getElementById("mensaje").textContent = esArquero
+  ? "Observa cómo el arquero participa en la defensa y en el inicio del ataque."
+  : "Aprende movimientos colectivos para crear espacios y oportunidades.";
+
+const jugadasCampo = [
+  {
+    titulo: "1. Pase y desmarque",
+    descripcion: "Un jugador pasa el balón y se mueve hacia un espacio libre para ofrecer una nueva opción de pase.",
+    objetivo: "Crear espacios y facilitar la circulación del balón.",
+    imagen: "imagenes/jugada-desmarque.jpg",
+    video: "videos/jugada-desmarque.mp4"
+  },
+  {
+    titulo: "2. Pared",
+    descripcion: "Un jugador pasa a un compañero, corre hacia un espacio y recibe una devolución rápida.",
+    objetivo: "Superar una marca mediante dos pases coordinados.",
+    imagen: "imagenes/jugada-pared.jpg",
+    video: "videos/jugada-pared.mp4"
+  },
+  {
+    titulo: "3. Rotación ofensiva",
+    descripcion: "Los jugadores intercambian posiciones de manera coordinada para abrir espacios y ofrecer líneas de pase.",
+    objetivo: "Mover la defensa rival y crear opciones de ataque.",
+    imagen: "imagenes/jugada-rotacion.jpg",
+    video: "videos/jugada-rotacion.mp4"
+  },
+  {
+    titulo: "4. Saque de esquina",
+    descripcion: "Los jugadores se ubican en posiciones acordadas para ofrecer opciones de pase o remate tras el saque.",
+    objetivo: "Crear una oportunidad de gol a balón parado.",
+    imagen: "imagenes/jugada-esquina.jpg",
+    video: "videos/jugada-esquina.mp4"
+  },
+  {
+    titulo: "5. Saque de banda",
+    descripcion: "El jugador que realiza el saque busca un compañero libre mientras el resto se mueve para facilitar la recepción.",
+    objetivo: "Reanudar el juego con una opción segura de pase.",
+    imagen: "imagenes/jugada-banda.jpg",
+    video: "videos/jugada-banda.mp4"
+  },
+  {
+    titulo: "6. Contraataque",
+    descripcion: "Tras recuperar el balón, el equipo busca avanzar rápidamente mediante pases seguros y movimientos coordinados.",
+    objetivo: "Aprovechar los espacios antes de que el rival se organice.",
+    imagen: "imagenes/jugada-contraataque.jpg",
+    video: "videos/jugada-contraataque.mp4"
+  }
+];
+
+const jugadasArquero = [
+  {
+    titulo: "1. Inicio del ataque",
+    descripcion: "Después de controlar el balón, el arquero busca un compañero libre y distribuye con precisión.",
+    objetivo: "Iniciar el ataque de forma segura.",
+    imagen: "imagenes/jugada-arquero-inicio.jpg",
+    video: "videos/jugada-arquero-inicio.mp4"
+  },
+  {
+    titulo: "2. Comunicación defensiva",
+    descripcion: "El arquero avisa a sus compañeros sobre los espacios que necesitan cubrir y los rivales que se acercan.",
+    objetivo: "Mejorar la organización defensiva.",
+    imagen: "imagenes/jugada-arquero-defensa.jpg",
+    video: "videos/jugada-arquero-defensa.mp4"
+  },
+  {
+    titulo: "3. Apoyo al compañero",
+    descripcion: "El arquero se prepara para recibir un pase seguro cuando la situación del juego lo permita.",
+    objetivo: "Ofrecer una opción de apoyo y mantener la posesión.",
+    imagen: "imagenes/jugada-arquero-apoyo.jpg",
+    video: "videos/jugada-arquero-apoyo.mp4"
+  },
+  {
+    titulo: "4. Organización ante un córner",
+    descripcion: "El arquero se coloca para observar el balón y coordina con sus compañeros la defensa del saque de esquina.",
+    objetivo: "Mejorar la colocación y la comunicación.",
+    imagen: "imagenes/jugada-arquero-corner.jpg",
+    video: "videos/jugada-arquero-corner.mp4"
+  },
+  {
+    titulo: "5. Distribución para contraatacar",
+    descripcion: "Tras recuperar el balón, el arquero identifica a un compañero libre y realiza una distribución precisa.",
+    objetivo: "Facilitar una transición segura al ataque.",
+    imagen: "imagenes/jugada-arquero-contraataque.jpg",
+    video: "videos/jugada-arquero-contraataque.mp4"
+  },
+  {
+    titulo: "6. Cobertura de la portería",
+    descripcion: "El arquero ajusta su posición según la ubicación del balón y coordina la cobertura con la defensa.",
+    objetivo: "Proteger mejor la portería y los espacios.",
+    imagen: "imagenes/jugada-arquero-cobertura.jpg",
+    video: "videos/jugada-arquero-cobertura.mp4"
+  }
+];
+
+const lista = esArquero ? jugadasArquero : jugadasCampo;
+const contenedor = document.getElementById("jugadas");
+
+lista.forEach(jugada => {
+  const tarjeta = document.createElement("section");
+  tarjeta.className = "tarjeta";
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = jugada.titulo;
+
+  const imagen = document.createElement("img");
+  imagen.src = jugada.imagen;
+  imagen.alt = jugada.titulo + " de futsal";
+  imagen.onerror = function() {
+    this.style.display = "none";
+  };
+
+  const descripcion = document.createElement("p");
+  descripcion.textContent = jugada.descripcion;
+
+  const objetivo = document.createElement("p");
+  objetivo.className = "objetivo";
+  objetivo.textContent = "Objetivo: " + jugada.objetivo;
+
+  const video = document.createElement("video");
+  video.controls = true;
+  video.preload = "metadata";
+  video.setAttribute("playsinline", "");
+
+  const fuente = document.createElement("source");
+  fuente.src = jugada.video;
+  fuente.type = "video/mp4";
+  video.appendChild(fuente);
+
+  const nota = document.createElement("p");
+  nota.className = "nota";
+  nota.textContent = "Video editable: " + jugada.video;
+
+  tarjeta.append(titulo, imagen, descripcion, objetivo, video, nota);
+  contenedor.appendChild(tarjeta);
+});
+
+function volverMenu() {
+  window.location.href =
+    "menu%20perfil.html?categoria=" +
+    encodeURIComponent(categoria) +
+    "&posicion=" + encodeURIComponent(posicion);
+}
+
+function cambiarPerfil() {
+  window.location.href = "perfil.html";
+}
+</script>
+</body>
+</html>
